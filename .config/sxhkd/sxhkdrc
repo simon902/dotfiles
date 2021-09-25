@@ -1,0 +1,118 @@
+##BSPWM Keybinding
+
+#-------~ Init ~-------#
+
+# Reload sxhkd/bspwmrc config
+super + {shift,alt} + r
+    {pkill -USR1 -x sxhkd,bspc wm -r}
+
+# Logout Menu/Quit BSPWM
+super + {_,shift} + x
+    {arcolinux-logout,bspc quit}
+
+# Kill window
+super + q
+    bspc node -c
+
+# Picom toggle
+ctrl + alt + p
+    ~/.config/bspwm/scripts/picom-toggle.sh
+
+
+#-------~ Focus Settings ~-------#
+
+# Focus given desktop
+super + {1-7,0}
+    bspc desktop -f '^{1-9,10}'
+
+# Focus on window in direction
+super + {Left,Down,Up,Right}
+    bspc node -f {west,south,north,east}
+
+#
+super + {dead_circumflex,Tab}
+    bspc {node,desktop} -f last
+
+# Send window to selected desktop
+super + shift + {1-7,0}
+    bspc node -d '^{1-9,10}' --follow
+
+# Swap window in direction
+super + shift {Left,Down,Up,Right}
+    bspc node -s {west,sout,north,east} --follow
+
+
+
+#-------~ Preselect Settings ~-------#
+
+# Preselect in direction
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -p {west,south,north,east}
+
+# Cancel preselect for focused node
+super + ctrl + space
+    bspc node -p cancel
+
+
+
+#-------~ Workspace Management ~-------#
+
+# Set window state
+super + space
+	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+#Toggle fullscreen of window
+super + f
+	bspc node --state \~fullscreen
+
+# Toggle pseudo tiling of window
+super + p
+	bspc node --state \~pseudo_tiled
+
+# Toggle between floating and tiling
+super + u
+	bspc node focused.tiled -t floating || bspc node -t tiled
+
+# Toggle between tiled and monocle layout
+super + m
+    bspc desktop -l next
+
+
+
+#-------~ Move/Resize Settings ~-------#
+
+# Expand a window by moving one of its side outward
+ctrl + alt + {Left,Down,Up,Right} 
+    bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# Contract a window by moving one of its side inward
+ctrl + alt + shift + {Left,Down,Up,Right}
+    bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# Move floating window
+super + alt + {Left,Down,Up,Right}
+    bspc node -v {-25 0,0 25,0 -25,25 0}
+
+
+
+#-------~ Application Keybindings ~-------#
+
+# Alacritty
+super + Return
+        alacritty
+
+# Firefox
+super + w
+        firefox
+
+# Rofi
+super + shift + Return
+        rofi -show drun
+
+# dmenu
+super + shift + d
+	dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+# Flameshoft
+Print
+    flameshot gui

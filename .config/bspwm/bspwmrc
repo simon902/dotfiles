@@ -1,0 +1,80 @@
+#!/bin/sh
+
+#LAUNCHERS
+$HOME/.config/bspwm/autostart.sh
+
+echo "End of Autostart"
+
+#fix for moving spotify to specific workspace
+#bspc config external_rules_command ~/.config/bspwm/scripts/external_rules_command
+
+# Multiple Monitors
+
+hdmi_monitor=$(xrandr --query | grep 'HDMI-0')
+dp_monitor=$(xrandr --query | grep 'DP-0')
+
+if [[ "$hdmi_monitor" = "HDMI-0 connected"*  && "$dp_monitor" = "DP-0 connected"* ]]; then
+    echo "Double Monitors"
+    xrandr --output DP-0 --primary --right-of HDMI-0
+    xrandr --output HDMI-0 --left-of DP-0
+     
+    bspc monitor DP-0 -d I II III IV
+    bspc monitor HDMI-0 -d V VI VII VIII 
+    
+else
+   echo "Single Monitor"
+   bspc monitor -d I II III IV V VI VII VIII IX X
+fi
+
+# BSPWM configuration
+
+bspc config automatic_scheme alternate
+bspc config initial_polarity second_child
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move                # Left Click
+bspc config pointer_action2 resize_side         # Mouse-Wheel Click
+bspc config pointer_action3 resize_corner       # Right Click
+
+bspc config focus_follows_pointer false
+bspc config single_monocle       false
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+
+#BSPWM gaps and padding
+bspc config window_gap           10
+bspc config border_width         3
+bspc config top_padding          44
+bspc config bottom_padding       0 
+bspc config left_padding         0 
+bspc config right_padding        0
+bspc config split_ratio          0.50
+
+#BSPWM coloring
+bspc config normal_border_color		"#4c566a"
+bspc config active_border_color		"#1e1e1e"
+bspc config focused_border_color	"#5e81ac"
+bspc config presel_feedback_color	"#5e81ac"
+
+# Switch monitors cause BSPWM is too stupid to do it automatically
+bspc monitor HDMI-0 -s DP-0
+
+#Fullscreen applications
+bspc rule -a Vlc state=fullscreen
+bspc rule -a VirtualBox Manager state=fullscreen
+bspc rule -a VirtualBox Machine state=fullscreen
+#bspc rule -a Gimp state=fullscreen
+
+#Floating applications
+bspc rule -a Spotify state=floating
+bspc rule -a mpv state=floating sticky=on
+bspc rule -a Nitrogen state=floating
+bspc rule -a Pavucontrol state=floating sticky=on
+bspc rule -a Stacer state=floating
+
+#open applications on specific workspaces
+bspc rule -a discord desktop='^4' follow=on
+bspc rule -a Spotify desktop='^10' follow=on
+
