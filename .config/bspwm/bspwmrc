@@ -15,16 +15,21 @@ dp_monitor=$(xrandr --query | grep 'DP-0')
 
 if [[ "$hdmi_monitor" = "HDMI-0 connected"*  && "$dp_monitor" = "DP-0 connected"* ]]; then
     echo "Double Monitors"
-    xrandr --output DP-0 --primary --right-of HDMI-0
-    xrandr --output HDMI-0 --left-of DP-0
+    xrandr --output HDMI-0 --primary --right-of DP-0
+    xrandr --output DP-0 --left-of HDMI-0
      
-    bspc monitor DP-0 -d I II III IV
-    bspc monitor HDMI-0 -d V VI VII VIII 
+    bspc monitor HDMI-0 -d I II III IV
+    bspc monitor DP-0 -d V VI VII VIII 
     
 else
    echo "Single Monitor"
    bspc monitor -d I II III IV V VI VII VIII IX X
 fi
+
+
+# Fix problems with Java GUIs https://wiki.archlinux.org/title/Bspwm#Problems_with_Java_applications
+wmname LG3D
+
 
 # BSPWM configuration
 
@@ -75,6 +80,7 @@ bspc rule -a Pavucontrol state=floating sticky=on
 bspc rule -a Stacer state=floating
 
 #open applications on specific workspaces
-bspc rule -a discord desktop='^4' follow=on
-bspc rule -a Spotify desktop='^10' follow=on
+bspc rule -a discord desktop='^8' follow=on
+bspc rule -a Spotify desktop='^8' follow=on
+
 
