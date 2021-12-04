@@ -9,4 +9,4 @@ poly workspaces-1 &
 poly workspaces-2 &
 
 #poly status-laptop &
-#poly workspaces-laptop &:wq
+#poly workspaces-laptop &
