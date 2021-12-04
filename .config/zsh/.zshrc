@@ -52,8 +52,11 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+
 # Aliases
 alias vim='nvim'
+alias cdu='cd ~/UNI/Semester_3/'
+alias cdslpg='cd /home/simon/UNI/Semester_3/SLP/slpw21g281'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -65,6 +68,8 @@ alias la='exa -a --color=always --group-directories-first'
 alias ll='exa -l --color=always --group-directories-first'
 alias lt='exa -aT --color=always --group-directories-first'
 alias l.='exa -a | grep "^\."'
+
+alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
