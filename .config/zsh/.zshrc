@@ -1,7 +1,8 @@
-neofetch
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# neofetch
+colorscript random
 
 autoload -U colors && colors
 
