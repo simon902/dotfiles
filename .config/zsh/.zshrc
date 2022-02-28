@@ -1,7 +1,8 @@
-neofetch
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
+
+# neofetch
+colorscript random
 
 autoload -U colors && colors
 
@@ -19,6 +20,10 @@ autoload -Uz compinit
 zstyle ':completion:*' menu select
 # Auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%d'
+zstyle ':completion:*:manuals' separate-sections true
+zstyle ':completion:*' insert-sections true
 
 zmodload zsh/complist
 compinit
