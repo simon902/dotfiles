@@ -1,0 +1,46 @@
+{
+    "workbench.colorTheme": "Dracula",
+    "tabnine.experimentalAutoImports": true,
+    "C_Cpp.intelliSenseEngine": "Disabled",
+	  "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+    "editor.renderWhitespace": "all",
+    "editor.tabSize": 2,
+    "clangd.fallbackFlags": [
+      // "-std=c++17"
+    ],
+    
+    "[cpp]": {
+
+        "editor.wordBasedSuggestions": false,
+        "editor.suggest.insertMode": "replace",
+        "editor.semanticHighlighting.enabled": true,
+        "editor.tabSize": 2,
+        "editor.rulers": [
+          //{
+            //"column": 80,    // spacing of 1st column from left
+            //"color": "#9f0af5"   // purple, go Pirates!
+          //},
+            100,  // 2nd ruler with no color option
+          {
+           "column": 120,      // third ruler
+           "color": "#ff9900"  // orange, Go Vols!
+          },
+       ],
+    },
+    "[python]": {
+
+      "editor.rulers": [
+        //{
+          //"column": 80,    // spacing of 1st column from left
+          //"color": "#ff9900"   // orange, Go Vols!
+        //},
+          100,  // 2nd ruler with no color option
+        {
+         "column": 120,      // third ruler
+         "color": "#9f0af5"  // purple, go Pirates! 
+        },
+     ],
+
+    },
+    "telemetry.telemetryLevel": "off",
+}
