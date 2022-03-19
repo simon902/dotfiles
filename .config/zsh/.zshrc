@@ -1,8 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-# neofetch
-colorscript random
+neofetch
+#colorscript random
 
 autoload -U colors && colors
 
@@ -60,8 +60,6 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # Aliases
 alias vim='nvim'
-alias cdu='cd ~/UNI/Semester_3/'
-alias cdslpg='cd /home/simon/UNI/Semester_3/SLP/slpw21g281'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
@@ -80,4 +78,8 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 
 # Starship Prompt
-eval "$(starship init zsh)"
+case $(tty) in
+	(/dev/tty[1-9]) ;;
+	(*) 		eval "$(starship init zsh)";;
+esac
+

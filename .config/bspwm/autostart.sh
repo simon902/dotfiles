@@ -31,3 +31,10 @@ run nm-applet
 run volumeicon
 
 run dunst
+
+#xbacklight -set 40
+
+if ! pgrep lxpolkit; then
+	/usr/bin/lxpolkit &
+fi
+

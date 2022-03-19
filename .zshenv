@@ -3,7 +3,7 @@ export ZDOTDIR=$HOME/.config/zsh
 path+=('/home/simon/.local/bin')
 export PATH
 
-
+export QT_QPA_PLATFORMTHEME=qt5ct
 export LIBVA_DRIVER_NAME="vdpau"
 export VDPAU_DRIVER="nvidia" 
 
