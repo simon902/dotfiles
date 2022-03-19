@@ -23,7 +23,8 @@ if [[ "$hdmi_monitor" = "HDMI-0 connected"*  && "$dp_monitor" = "DP-0 connected"
     
 else
    echo "Single Monitor"
-   bspc monitor -d I II III IV V VI VII VIII IX X
+   # bspc monitor -d '' '' '' '' '' '' '' ''
+   bspc monitor -d I II III IV V VI VII VIII
 fi
 
 
@@ -49,9 +50,9 @@ bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
 #BSPWM gaps and padding
-bspc config window_gap           10
+bspc config window_gap           5
 bspc config border_width         3
-bspc config top_padding          44
+bspc config top_padding          34
 bspc config bottom_padding       0 
 bspc config left_padding         0 
 bspc config right_padding        0

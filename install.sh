@@ -28,5 +28,11 @@ ln -s $curr_path/.config/sxhkd/sxhkdrc $HOME/.config/sxhkd/sxhkdrc
 #### POLYBAR ####
 mkdir -p $HOME/.config/polybar/
 
-ln -s $curr_path/.config/polybar/config.ini $HOME/.config/polybar/config.ini
-ln -s $curr_path/.config/polybar/launch.sh $HOME/.config/polybar/launch.sh
+polybar_path="/.config/polybar/"
+cd $curr_path$polybar_path"conf1"
+
+for file in *; do
+  if [ -f "$file" ]; then
+    ln -s "$(pwd)"/"$file" $HOME$polybar_path$file
+  fi
+done
