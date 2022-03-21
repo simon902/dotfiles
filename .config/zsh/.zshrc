@@ -1,8 +1,8 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-neofetch
-#colorscript random
+#neofetch
+colorscript random
 
 autoload -U colors && colors
 
@@ -13,20 +13,23 @@ HISTFILE=~/.cache/zsh/history
 
 # Autocomplete
 #zstyle ':completion:*' completer _expand _complete _ignored
-#zstyle ':completion:*' matcher-list ''
 #zstyle :compinstall filename '/home/simon/.zshrc'
 
-autoload -Uz compinit
 zstyle ':completion:*' menu select
 # Auto complete with case insenstivity
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+
+# for all completions: color
+# zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# Man Pages
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*' insert-sections true
 
 zmodload zsh/complist
-compinit
+autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 
