@@ -116,3 +116,9 @@ super + shift + d
 # Flameshoft
 Print
     flameshot gui
+
+XF86MonBrightnessUp
+  changebrightness up
+
+XF86MonBrightnessDown
+  changebrightness down
