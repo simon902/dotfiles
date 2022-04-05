@@ -54,3 +54,11 @@ for file in *; do
     ln -s "$(pwd)"/"$file" $HOME$polybar_path$file
   fi
 done
+
+
+#### .local/bin ####
+mkdir -p .local/bin
+
+local_bin_path="/.local/bin/"
+
+link_configs $local_bin_path

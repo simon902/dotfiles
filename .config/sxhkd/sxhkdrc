@@ -122,3 +122,7 @@ XF86MonBrightnessUp
 
 XF86MonBrightnessDown
   changebrightness down
+
+super + shift + l
+  switchTouchpad  
+
