@@ -15,9 +15,13 @@ neofetch
 autoload -U colors && colors
 
 # History
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000000
+SAVEHIST=1000000000
 HISTFILE=~/.cache/zsh/history
+
+setopt SHARE_HISTORY # includes INC_APPEND_HISTORY, EXTENDED_HISTORY
+setopt HIST_FIND_NO_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
 # Autocomplete
 zmodload zsh/complist
@@ -82,6 +86,8 @@ function copyfile {
 # Aliases
 alias vim='nvim'
 
+alias cdos='cd $HOME/UNI/Semester_4/OS/bss22d2/'
+alias cdu='cd $HOME/UNI/Semester_4/'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
