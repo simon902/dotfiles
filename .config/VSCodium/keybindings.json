@@ -1,6 +1,16 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
   {
+    "key": "ctrl+[Backslash]",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
+    "key": "ctrl+shift+[Equal]",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
+  {
     "key": "alt+k",
     "command": "editor.action.commentLine",
     "when": "editorTextFocus && !editorReadonly"
@@ -11,13 +21,21 @@
     "when": "editorTextFocus && !editorReadonly"
   },
   {
-    "key": "ctrl+[Backslash]",
-    "command": "workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "key": "alt+f",
+    "command": "editor.toggleFold",
+    "when": "editorTextFocus && foldingEnabled"
   },
   {
-    "key": "ctrl+shift+[Equal]",
-    "command": "-workbench.action.terminal.toggleTerminal",
-    "when": "terminal.active"
+    "key": "ctrl+k ctrl+l",
+    "command": "-editor.toggleFold",
+    "when": "editorTextFocus && foldingEnabled"
+  },
+  {
+    "key": "alt+q",
+    "command": "workbench.action.closeActiveEditor"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-workbench.action.closeActiveEditor"
   }
 ]

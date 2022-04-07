@@ -84,10 +84,10 @@ function copyfile {
 
 
 # Aliases
-alias vim='nvim'
 
-alias cdos='cd $HOME/UNI/Semester_4/OS/bss22d2/'
-alias cdu='cd $HOME/UNI/Semester_4/'
+source $HOME/repos/dotfiles/.config/zsh/aliases
+
+alias vim='nvim'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'

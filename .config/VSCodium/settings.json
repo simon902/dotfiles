@@ -43,4 +43,28 @@
 
     },
     "telemetry.telemetryLevel": "off",
+
+
+
+    "vim.ignorecase": true,
+    "vim.smartcase": false,
+    "vim.hlsearch": true,
+
+	// Controls the font family.
+	"editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace",
+    
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "all",
+
+    "workbench.colorTheme": "One Monokai Dark",
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "[cpp]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2 
+    },
+    "tabnine.experimentalAutoImports": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "editor.lineNumbers": "relative"
+
+
 }
