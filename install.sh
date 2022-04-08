@@ -62,3 +62,12 @@ mkdir -p .local/bin
 local_bin_path="/.local/bin/"
 
 link_configs $local_bin_path
+
+
+#### VSCodium ####
+
+mkdir -p .config/VSCodium/User
+
+vscodium_path="/.config/VSCodium/User/"
+
+link_configs $vscodium_path
