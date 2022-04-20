@@ -17,6 +17,13 @@ link_configs() {
 CONFIG_ROOT=$(pwd)
 
 
+#### Alacritty ####
+mkdir -p $HOME/.config/alacritty/
+
+alacritty_path="/.config/alacritty/"
+
+link_configs $alacritty_path
+
 #### ZSH ####
 mkdir -p $HOME/.config/zsh/
 mkdir -p $HOME/.cache/zsh/
