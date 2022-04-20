@@ -49,6 +49,10 @@ bspc config merge_overlapping_monitors true
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+# To focus from tiled to floating window
+bspc config directional_focus_tightness low
+
+
 #BSPWM gaps and padding
 bspc config window_gap           5
 bspc config border_width         3

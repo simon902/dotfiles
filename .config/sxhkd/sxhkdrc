@@ -4,7 +4,7 @@
 
 # Reload sxhkd/bspwmrc config
 super + {shift,alt} + r
-    {pkill -USR1 -x sxhkd,bspc wm -r}
+    {bspc wm -r, pkill -USR1 -x sxhkd}
 
 # Logout Menu/Quit BSPWM
 super + {_,shift} + x
