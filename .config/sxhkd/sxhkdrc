@@ -4,7 +4,7 @@
 
 # Reload sxhkd/bspwmrc config
 super + {shift,alt} + r
-    {bspc wm -r, pkill -USR1 -x sxhkd}
+    {bspc wm -r, pkill -USR1 -x sxhkR}
 
 # Logout Menu/Quit BSPWM
 super + {_,shift} + x
@@ -117,12 +117,22 @@ super + shift + d
 Print
     flameshot gui
 
+# screen brightness
 XF86MonBrightnessUp
   changebrightness up
 
 XF86MonBrightnessDown
   changebrightness down
 
+# volume keys
+XF86AudioRaiseVolume
+	changevolume up
+
+XF86AudioLowerVolume
+	changevolume down
+
+XF86AudioMute
+	changevolume mute
 super + shift + l
   switchTouchpad  
 

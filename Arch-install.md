@@ -9,9 +9,14 @@
 
 - Laptop Gestures https://wiki.archlinux.org/title/Touchpad_Synaptics
 
+### Graphics
+- mesa
+- xf86-video-amdgpu
+
 
 ### PACKAGES
 
+- xorg
 - iwd
 - man-pages
 - pulseaudio
@@ -37,6 +42,7 @@
 - gvfs
 - udisks2
 - firewalld
+- pamixer
 
 ### Programs
 
@@ -48,7 +54,7 @@
 - mpd
 - firefox
 - gimp
-- obs
+- obs-studio
 - redshift
 - flameshot
 - volumeicon
