@@ -105,6 +105,10 @@ super + Return
 super + w
         firefox
 
+# File Manager
+super + e
+        pcmanfm
+
 # Rofi
 super + shift + Return
         rofi -show drun
