@@ -65,7 +65,7 @@ done
 
 
 #### .local/bin ####
-mkdir -p .local/bin
+mkdir -p $HOME/.local/bin
 
 local_bin_path="/.local/bin/"
 
@@ -74,8 +74,20 @@ link_configs $local_bin_path
 
 #### VSCodium ####
 
-mkdir -p .config/VSCodium/User
+mkdir -p $HOME/.config/VSCodium/User
 
 vscodium_path="/.config/VSCodium/User/"
 
 link_configs $vscodium_path
+
+
+#### Rofi ####
+mkdir -p $HOME/.config/rofi/{bin, themes}
+
+rofi_bin_path="/.config/rofi/bin/"
+rofi_themes="/.config/rofi/themes/"
+
+link_configs $rofi_bin_path
+link_configs $rofi_themes
+
+

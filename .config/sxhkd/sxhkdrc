@@ -8,7 +8,7 @@ super + {shift,alt} + r
 
 # Logout Menu/Quit BSPWM
 super + {_,shift} + x
-    {arcolinux-logout,bspc quit}
+    {$HOME/.config/rofi/bin/powermenu,bspc quit}
 
 # Kill window
 super + q
