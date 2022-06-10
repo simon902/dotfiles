@@ -27,6 +27,7 @@ link_configs $alacritty_path
 #### ZSH ####
 mkdir -p $HOME/.config/zsh/
 mkdir -p $HOME/.cache/zsh/
+touch $CONFIG_ROOT/.config/zsh/aliases
 
 zsh_path="/.config/zsh/"
 
