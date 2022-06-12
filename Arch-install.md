@@ -42,7 +42,9 @@
 - gvfs
 - udisks2
 - firewalld
+- wmname
 - pamixer
+- betterlockscreen
 
 ### Programs
 
@@ -95,6 +97,19 @@ https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 ### Fonts
 
 - noto-fonts-emoji
+- noto-fonts
+- ttf-dejavu
+- ttf-fira-mono
+- ttc-iosevka
+- adobe-source-code-pro-fonts
+- ttf-opensans
+- adobe-source-han-sans-cn-fonts
+- adobe-source-han-sans-jp-fonts
+- adobe-source-han-sans-kr-fonts
+- ttf-material-design-icons
+- nerd-fonts-jetbrains-mono
+- ttf-iosevka-nerd
+- ttf-font-awesome
 
 
 ### Backlight

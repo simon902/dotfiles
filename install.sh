@@ -82,7 +82,7 @@ link_configs $vscodium_path
 
 
 #### Rofi ####
-mkdir -p $HOME/.config/rofi/{bin, themes}
+mkdir -p $HOME/.config/rofi/{bin,themes}
 
 rofi_bin_path="/.config/rofi/bin/"
 rofi_themes="/.config/rofi/themes/"

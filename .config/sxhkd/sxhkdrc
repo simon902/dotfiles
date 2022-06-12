@@ -4,7 +4,7 @@
 
 # Reload sxhkd/bspwmrc config
 super + {shift,alt} + r
-    {bspc wm -r, pkill -USR1 -x sxhkR}
+    {bspc wm -r, pkill -USR1 -x sxhkd}
 
 # Logout Menu/Quit BSPWM
 super + {_,shift} + x
@@ -111,7 +111,7 @@ super + e
 
 # Rofi
 super + shift + Return
-        rofi -show drun
+        $HOME/.config/rofi/bin/launcher
 
 # dmenu
 super + shift + d
@@ -137,6 +137,8 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	changevolume mute
+
+# Misc
 super + shift + l
   switchTouchpad  
 
