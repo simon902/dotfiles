@@ -22,6 +22,7 @@
 - pulseaudio
 - xclip for vim clipboard
 - blue, bluez-utils
+- pulseaudio-bluetooth
 - alsa-utils
 - acpi
 - virt-manager
