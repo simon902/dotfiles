@@ -26,7 +26,7 @@
 - alsa-utils
 - acpi
 - virt-manager
-- qemu
+- qemu-desktop
 - bridge-utils
 - dnsmasq
 - openbsd-netcat
