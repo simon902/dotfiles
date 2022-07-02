@@ -17,6 +17,13 @@ link_configs() {
 CONFIG_ROOT=$(pwd)
 
 
+#### XDG Default Applications ###
+ xdg-mime default sxiv.desktop image/jpeg
+ xdg-mime default sxiv.desktop image/png
+ xdg-mime default mpv.desktop video/mp4
+ xdg-mime default org.pwmt.zathura.desktop application/pdf
+
+
 #### Alacritty ####
 mkdir -p $HOME/.config/alacritty/
 
@@ -90,4 +97,11 @@ rofi_themes="/.config/rofi/themes/"
 link_configs $rofi_bin_path
 link_configs $rofi_themes
 
+
+#### .local/bin ####
+mkdir -p $HOME/.config/mpv
+
+mpv_path="/.config/mpv/"
+
+link_configs $mpv_path
 
