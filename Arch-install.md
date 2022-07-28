@@ -60,6 +60,8 @@
 - obs-studio
 - redshift
 - flameshot
+- ranger
+- sxiv
 - volumeicon
 
 
