@@ -22,7 +22,7 @@
 - man-pages
 - pulseaudio
 - xclip for vim clipboard
-- blue, bluez-utils
+- bluez, bluez-utils
 - pulseaudio-bluetooth
 - alsa-utils
 - acpi
@@ -46,7 +46,7 @@
 - firewalld
 - wmname
 - pamixer
-- betterlockscreen
+- betterlockscreen                      (aur)
 - exa
 - lscolors-git                          (aur)
 - starship
