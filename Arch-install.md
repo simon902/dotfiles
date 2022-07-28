@@ -26,7 +26,7 @@
 - alsa-utils
 - acpi
 - virt-manager
-- qemu
+- qemu-desktop
 - bridge-utils
 - dnsmasq
 - openbsd-netcat
@@ -131,5 +131,22 @@ https://www.youtube.com/watch?v=pGOaSS8nEQA
 - mtpfs
 - gvfs-mtp
 - gvfs-gphoto2
+
+
+### VSCode Extensions
+
+- C/C++
+- clangd
+- CodeLLDB
+- ES7+ React/Redux/React-Native snippets
+- Haskell
+- Haskell Syntax Highlighting
+- Live Server
+- One Monokai Theme
+- Prettier - Code formatter
+- Python
+- Quokka.js
+- Tabnine
+- Vim
 
 

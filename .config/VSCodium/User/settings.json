@@ -1,59 +1,65 @@
 {
-    "workbench.colorTheme": "One Monokai",
-    "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
+  "workbench.colorTheme": "One Monokai",
+  "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
+  "editor.renderWhitespace": "all",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.lineNumbers": "relative",
+  "vim.ignorecase": true,
+  "vim.smartcase": false,
+  "vim.hlsearch": true,
 
-    "editor.renderWhitespace": "all",
-    "editor.tabSize": 2,
+  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-8.10.7",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  "security.workspace.trust.untrustedFiles": "open",
+  "telemetry.telemetryLevel": "off",
+  "tabnine.experimentalAutoImports": true,
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "clangd.fallbackFlags": [
+    // "-std=c++17"
+  ],
+
+  "[cpp]": {
+    "editor.wordBasedSuggestions": false,
+    "editor.suggest.insertMode": "replace",
+    "editor.semanticHighlighting.enabled": true,
     "editor.insertSpaces": true,
-    "editor.lineNumbers": "relative",
-    "vim.ignorecase": true,
-    "vim.smartcase": false,
-    "vim.hlsearch": true,
+    "editor.tabSize": 2,
+    "editor.rulers": [
+      //{
+      //"column": 80,    // spacing of 1st column from left
+      //"color": "#9f0af5"   // purple, go Pirates!
+      //},
+      100, // 2nd ruler with no color option
+      {
+        "column": 120, // third ruler
+        "color": "#ff9900" // orange, Go Vols!
+      }
+    ]
+  },
 
-
-    "security.workspace.trust.untrustedFiles": "open",
-    "telemetry.telemetryLevel": "off",
-    "tabnine.experimentalAutoImports": true,
-    "C_Cpp.intelliSenseEngine": "Disabled",
-    "clangd.fallbackFlags": [
-      // "-std=c++17"
-    ],
-    
-    "[cpp]": {
-
-      "editor.wordBasedSuggestions": false,
-      "editor.suggest.insertMode": "replace",
-      "editor.semanticHighlighting.enabled": true,
-      "editor.insertSpaces": true,
-      "editor.tabSize": 2,
-      "editor.rulers": [
-        //{
-          //"column": 80,    // spacing of 1st column from left
-          //"color": "#9f0af5"   // purple, go Pirates!
-        //},
-          100,  // 2nd ruler with no color option
-        {
-         "column": 120,      // third ruler
-         "color": "#ff9900"  // orange, Go Vols!
-        }
-      ]
-    },
-
-    "[python]": {
-
-      "editor.tabSize": 4,
-      "editor.rulers": [
-        //{
-          //"column": 80,    // spacing of 1st column from left
-          //"color": "#ff9900"   // orange, Go Vols!
-        //},
-          100,  // 2nd ruler with no color option
-        {
-         "column": 120,      // third ruler
-         "color": "#9f0af5"  // purple, go Pirates! 
-        }
-      ]
-    },
-    "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd"
+  "[python]": {
+    "editor.tabSize": 4,
+    "editor.rulers": [
+      //{
+      //"column": 80,    // spacing of 1st column from left
+      //"color": "#ff9900"   // orange, Go Vols!
+      //},
+      100, // 2nd ruler with no color option
+      {
+        "column": 120, // third ruler
+        "color": "#9f0af5" // purple, go Pirates!
+      }
+    ]
+  },
+  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd",
+  "haskell.manageHLS": "PATH",
+  "liveServer.settings.donotShowInfoMsg": true,
+  "editor.formatOnSave": true,
+  "html.format.contentUnformatted": "",
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": { "*html": "html" },
+  "emmet.useInlineCompletions": true
 }
