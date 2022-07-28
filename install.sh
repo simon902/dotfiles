@@ -50,13 +50,17 @@ fi
 CONFIG_ROOT=$(pwd)
 mkdir .backup
 
+#### xinit ####
+cp $HOME/.xinitrc ${CONFIG_ROOT}"/.backup/" && rm $HOME/.xinitrc
+ln -s $CONFIG_ROOT/.xinitrc $HOME/.xinitrc
 
-#### XDG Default Applications ###
- xdg-mime default sxiv.desktop image/jpeg
- xdg-mime default sxiv.desktop image/png
- xdg-mime default mpv.desktop video/mp4
- xdg-mime default org.pwmt.zathura.desktop application/pdf
- xdg-mime default vscodium.desktop text/plain
+
+#### XDG Default Applications ####
+xdg-mime default sxiv.desktop image/jpeg
+xdg-mime default sxiv.desktop image/png
+xdg-mime default mpv.desktop video/mp4
+xdg-mime default org.pwmt.zathura.desktop application/pdf
+xdg-mime default vscodium.desktop text/plain
 
 
 #### Alacritty ####
