@@ -137,6 +137,8 @@ link_configs $link_path $link_path
 
 #### mpd/ncmpcpp ####
 mkdir -p $HOME/.config/{mpd,ncmpcpp}
+mkdir -p $HOME/.local/share/mpd
+mkdir -p $HOME/.local/share/mpd/playlists
 
 link_path="/.config/mpd/"
 link_configs $link_path $link_path
@@ -148,3 +150,9 @@ mkdir -p $HOME/.config/mpv
 link_path="/.config/mpv/"
 link_configs $link_path $link_path
 
+
+#### .local/bin ####
+mkdir -p $HOME/.config/redshift
+
+link_path="/.config/redshift/"
+link_configs $link_path $link_path
