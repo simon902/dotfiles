@@ -131,3 +131,20 @@ https://www.youtube.com/watch?v=pGOaSS8nEQA
 - gvfs-gphoto2
 
 
+### VSCode Extensions
+
+- C/C++
+- clangd
+- CodeLLDB
+- ES7+ React/Redux/React-Native snippets
+- Haskell
+- Haskell Syntax Highlighting
+- Live Server
+- One Monokai Theme
+- Prettier - Code formatter
+- Python
+- Quokka.js
+- Tabnine
+- Vim
+
+
