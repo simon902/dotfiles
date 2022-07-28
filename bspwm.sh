@@ -6,6 +6,6 @@ cd ..
 rm -rf yay/
 
 
-pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
+sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 
 yay -S vscodium-bin nerd-fonts-jetbrains-mono nerd-fonts-roboto-mono ttf-material-design-icons nordic-darker-theme bibata-cursor-theme paper-icon-theme lscolors-git 

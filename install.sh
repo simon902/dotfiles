@@ -51,7 +51,8 @@ CONFIG_ROOT=$(pwd)
 mkdir .backup
 
 #### xinit ####
-cp $HOME/.xinitrc ${CONFIG_ROOT}"/.backup/" && rm $HOME/.xinitrc
+cp $HOME/.xinitrc ${CONFIG_ROOT}"/.backup/"
+rm $HOME/.xinitrc
 ln -s $CONFIG_ROOT/.xinitrc $HOME/.xinitrc
 
 
@@ -75,7 +76,8 @@ mkdir -p $HOME/.config/zsh/
 mkdir -p $HOME/.cache/zsh/
 touch $CONFIG_ROOT/.config/zsh/aliases
 
-cp $HOME/.zshenv ${CONFIG_ROOT}"/.backup/" && rm $HOME/.zshenv
+cp $HOME/.zshenv ${CONFIG_ROOT}"/.backup/"
+rm $HOME/.zshenv
 ln -s $CONFIG_ROOT/.zshenv $HOME/.zshenv
 
 link_path="/.config/zsh/"
@@ -84,7 +86,8 @@ link_configs $link_path $link_path
 
 #### Starship ####
 
-cp $HOME/.config/starship.toml ${CONFIG_ROOT}"/.backup/"starship.toml && rm $HOME/.config/starship.toml
+cp $HOME/.config/starship.toml ${CONFIG_ROOT}"/.backup/"starship.toml
+rm $HOME/.config/starship.toml
 ln -s $CONFIG_ROOT/.config/starship.toml $HOME/.config/starship.toml
 
 
