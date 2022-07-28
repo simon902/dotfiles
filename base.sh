@@ -1,4 +1,6 @@
 #!/bin/sh
+reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist
+
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 hwclock --systohc
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
@@ -42,4 +44,4 @@ echo -e "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/99_wheel
 su -c "chsh -s /usr/bin/zsh" simon
 
 
-echo "Run: exit\numount -R /mnt\nreboot"
+echo -e "Run: exit\numount -R /mnt\nreboot"
