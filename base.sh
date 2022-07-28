@@ -13,7 +13,7 @@ echo "127.0.0.1 simon-arch.localdomain simon-arch" >> /etc/hosts
 
 passwd root
 
-pacman -S terminus-font grub efibootmgr networkmanager network-manager-applet wpa_supplicant git reflector zsh linux-headers bluez bluez-utils xdg-utils xdg-user-dirs rsync openssh neofetch htop
+pacman -S terminus-font grub efibootmgr networkmanager network-manager-applet wpa_supplicant git reflector zsh linux-headers bluez bluez-utils xdg-utils xdg-user-dirs rsync openssh neofetch htop libvirt
 
 
 # if AMD GPU
@@ -35,7 +35,9 @@ systemctl enable acpid
 # systemctl enable sshd
 
 useradd -mG wheel simon
+passwd simon
 usermod -aG network,storage,video,libvirt simon
+
 echo -e "%wheel ALL=(ALL:ALL) ALL" > /etc/sudoers.d/99_wheel 
 su -c "chsh -s /usr/bin/zsh" simon
 
