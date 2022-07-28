@@ -17,6 +17,7 @@
 ### PACKAGES
 
 - xorg
+- xorg-xinit
 - iwd
 - man-pages
 - pulseaudio
@@ -46,6 +47,10 @@
 - wmname
 - pamixer
 - betterlockscreen
+- exa
+- lscolors-git                          (aur)
+- starship
+- neovim
 
 ### Programs
 
@@ -63,6 +68,11 @@
 - ranger
 - sxiv
 - volumeicon
+- polybar                       (aur)
+- bspwm   
+- sxhkd
+- rofi
+- dmenu 
 
 
 ### Systemd Services
@@ -109,10 +119,11 @@ https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 - adobe-source-han-sans-cn-fonts
 - adobe-source-han-sans-jp-fonts
 - adobe-source-han-sans-kr-fonts
-- ttf-material-design-icons
-- nerd-fonts-jetbrains-mono
 - ttf-iosevka-nerd
 - ttf-font-awesome
+- ttf-material-design-icons             (aur)
+- nerd-fonts-jetbrains-mono             (aur)
+- nerd-fonts-roboto-mono                (aur)
 
 
 ### Backlight
