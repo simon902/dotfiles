@@ -9,6 +9,9 @@
 
 - Laptop Gestures https://wiki.archlinux.org/title/Touchpad_Synaptics
 
+- Firefox: set page size to A4 for printing
+
+
 ### Graphics
 - mesa
 - xf86-video-amdgpu
