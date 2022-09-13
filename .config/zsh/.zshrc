@@ -89,6 +89,7 @@ source $HOME/repos/dotfiles/.config/zsh/aliases
 
 alias vim='nvim'
 alias rg='. ranger'
+alias codium='vscode'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
