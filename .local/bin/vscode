@@ -4,6 +4,6 @@ dir=""
 if [ -z "$1" ]; then
 	dir=$(dirname ".")
 else
-	dir=$(dirname $1)
+	dir=$(dirname $(readlink -f $1))
 fi
 codium -n --folder-uri $dir $1
