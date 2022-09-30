@@ -54,5 +54,7 @@
          "color": "#9f0af5"  // purple, go Pirates! 
         }
       ]
-    }
+    },
+    "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd",
+    "window.zoomLevel": -1
 }
