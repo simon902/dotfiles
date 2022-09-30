@@ -6,13 +6,13 @@ path+=('/home/simon/.ghcup/bin')
 export PATH
 
 export QT_QPA_PLATFORMTHEME=qt5ct
-export LIBVA_DRIVER_NAME="vdpau"
-export VDPAU_DRIVER="nvidia" 
+export LIBVA_DRIVER_NAME=vdpau
+export VDPAU_DRIVER=nvidia
 
 # Default Programs
-export BROWSER="firefox"
-export TERMINAL="alacritty"
-export EDITOR="nvim"
-export READER="zathura"
-export IMAGE="sxiv"
-export VIDEO="mpv" 
+export BROWSER=firefox
+export TERMINAL=alacritty
+export EDITOR=nvim
+export READER=zathura
+export IMAGE=sxiv
+export VIDEO=mpv
