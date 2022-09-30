@@ -9,18 +9,28 @@
 
 - Laptop Gestures https://wiki.archlinux.org/title/Touchpad_Synaptics
 
+- Firefox: set page size to A4 for printing
+
+
+### Graphics
+- mesa
+- xf86-video-amdgpu
+
 
 ### PACKAGES
 
+- xorg
+- xorg-xinit
 - iwd
 - man-pages
 - pulseaudio
 - xclip for vim clipboard
-- blue, bluez-utils
+- bluez, bluez-utils
+- pulseaudio-bluetooth
 - alsa-utils
 - acpi
 - virt-manager
-- qemu
+- qemu-desktop
 - bridge-utils
 - dnsmasq
 - openbsd-netcat
@@ -37,6 +47,13 @@
 - gvfs
 - udisks2
 - firewalld
+- wmname
+- pamixer
+- betterlockscreen                      (aur)
+- exa
+- lscolors-git                          (aur)
+- starship
+- neovim
 
 ### Programs
 
@@ -48,10 +65,17 @@
 - mpd
 - firefox
 - gimp
-- obs
+- obs-studio
 - redshift
 - flameshot
+- ranger
+- sxiv
 - volumeicon
+- polybar                       (aur)
+- bspwm   
+- sxhkd
+- rofi
+- dmenu 
 
 
 ### Systemd Services
@@ -89,6 +113,20 @@ https://wiki.archlinux.org/title/Uniform_look_for_Qt_and_GTK_applications
 ### Fonts
 
 - noto-fonts-emoji
+- noto-fonts
+- ttf-dejavu
+- ttf-fira-mono
+- ttc-iosevka
+- adobe-source-code-pro-fonts
+- ttf-opensans
+- adobe-source-han-sans-cn-fonts
+- adobe-source-han-sans-jp-fonts
+- adobe-source-han-sans-kr-fonts
+- ttf-iosevka-nerd
+- ttf-font-awesome
+- ttf-material-design-icons             (aur)
+- nerd-fonts-jetbrains-mono             (aur)
+- nerd-fonts-roboto-mono                (aur)
 
 
 ### Backlight
@@ -107,5 +145,22 @@ https://www.youtube.com/watch?v=pGOaSS8nEQA
 - mtpfs
 - gvfs-mtp
 - gvfs-gphoto2
+
+
+### VSCode Extensions
+
+- C/C++
+- clangd
+- CodeLLDB
+- ES7+ React/Redux/React-Native snippets
+- Haskell
+- Haskell Syntax Highlighting
+- Live Server
+- One Monokai Theme
+- Prettier - Code formatter
+- Python
+- Quokka.js
+- Tabnine
+- Vim
 
 

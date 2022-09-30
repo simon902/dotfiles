@@ -1,6 +1,8 @@
 export ZDOTDIR=$HOME/.config/zsh
 
 path+=('/home/simon/.local/bin')
+path+=('/home/simon/.cabal/bin')
+path+=('/home/simon/.ghcup/bin')
 export PATH
 
 export QT_QPA_PLATFORMTHEME=qt5ct

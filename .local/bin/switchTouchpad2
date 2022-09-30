@@ -1,0 +1,9 @@
+#!/bin/sh
+
+change=$(xinput list-props 17 | grep "Device Enabled" | awk '{print $4}')
+
+if [[ $change == 1 ]] ; then
+  xinput set-prop 17 "Device Enabled" 0
+else
+  xinput set-prop 17 "Device Enabled" 1
+fi

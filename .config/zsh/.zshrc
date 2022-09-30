@@ -9,7 +9,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-neofetch
+#neofetch
 #colorscript random
 
 autoload -U colors && colors
@@ -88,6 +88,8 @@ function copyfile {
 source $HOME/repos/dotfiles/.config/zsh/aliases
 
 alias vim='nvim'
+alias rg='. ranger'
+alias codium='vscode'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'

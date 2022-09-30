@@ -2,13 +2,13 @@
 
 #-------~ Init ~-------#
 
-# Reload sxhkd/bspwmrc config
+# Reload bspwmrc/sxhkd config
 super + {shift,alt} + r
     {bspc wm -r, pkill -USR1 -x sxhkd}
 
 # Logout Menu/Quit BSPWM
 super + {_,shift} + x
-    {arcolinux-logout,bspc quit}
+    {$HOME/.config/rofi/bin/powermenu,bspc quit}
 
 # Kill window
 super + q
@@ -105,9 +105,13 @@ super + Return
 super + w
         firefox
 
+# File Manager
+super + e
+        pcmanfm
+
 # Rofi
 super + shift + Return
-        rofi -show drun
+        $HOME/.config/rofi/bin/launcher
 
 # dmenu
 super + shift + d
@@ -117,12 +121,24 @@ super + shift + d
 Print
     flameshot gui
 
+# screen brightness
 XF86MonBrightnessUp
   changebrightness up
 
 XF86MonBrightnessDown
   changebrightness down
 
+# volume keys
+XF86AudioRaiseVolume
+	changevolume up
+
+XF86AudioLowerVolume
+	changevolume down
+
+XF86AudioMute
+	changevolume mute
+
+# Misc
 super + shift + l
   switchTouchpad  
 
