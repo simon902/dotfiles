@@ -30,8 +30,8 @@ SplitScreen()
 {
   echo "--- Split Screen ---"
   
-  monitor_primary=$(grep -e "MONITOR_PRIMARY" $HOME"/.config/bspwm/screen.conf" | cut -d'=' -f2)
-  monitor_sequence=$(grep -e "MONITOR_SEQUENCE" $HOME"/.config/bspwm/screen.conf" | cut -d'=' -f2)
+  monitor_primary=$(grep -e "monitor_primary" $HOME"/.config/bspwm/screen.conf" | cut -d' ' -f2-)
+  monitor_sequence=$(grep -e "monitor_sequence" $HOME"/.config/bspwm/screen.conf" | cut -d' ' -f2-)
 
   placing_left=True
 
