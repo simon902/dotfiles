@@ -60,6 +60,7 @@ ln -s $CONFIG_ROOT/.xinitrc $HOME/.xinitrc
 xdg-mime default sxiv.desktop image/jpeg
 xdg-mime default sxiv.desktop image/png
 xdg-mime default mpv.desktop video/mp4
+xdg-mime default mpv.desktop video/x-matroska
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 xdg-mime default vscodium.desktop text/plain
 
