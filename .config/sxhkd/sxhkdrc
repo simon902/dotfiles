@@ -142,3 +142,6 @@ XF86AudioMute
 super + shift + l
   switchTouchpad  
 
+super + shift + s
+  changeMirrorScreen
+

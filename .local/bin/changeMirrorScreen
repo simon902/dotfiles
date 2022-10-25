@@ -1,0 +1,11 @@
+#!/bin/sh
+state=$(cat $HOME"/.config/bspwm/screen.conf" | awk '$1 == "duplicate" { print $2 }')
+echo $state
+
+if [[ $state = "TRUE" ]]; then
+  sed -i 's/duplicate.*/duplicate FALSE/' $HOME"/.config/bspwm/screen.conf"
+else
+  sed -i 's/duplicate.*/duplicate TRUE/' $HOME"/.config/bspwm/screen.conf"
+fi
+
+bspc wm -r

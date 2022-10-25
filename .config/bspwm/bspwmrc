@@ -6,27 +6,6 @@ $HOME/.config/bspwm/autostart.sh
 echo "End of Autostart"
 
 
-# Multiple Monitors
-HDMI="HDMI-A-0"
-DP="DisplayPort-2"
-
-hdmi_monitor=$(xrandr --query | grep $HDMI)
-dp_monitor=$(xrandr --query | grep $DP)
-
-if [[ "$hdmi_monitor" = $HDMI" connected"*  && "$dp_monitor" = $DP" connected"* ]]; then
-    echo "Double Monitors"
-    xrandr --output $DP --primary --mode 1920x1080 --right-of $HDMI
-    xrandr --output $HDMI --mode 1920x1080 --left-of $DP
-     
-    bspc monitor DisplayPort-2 -d I II III IV
-    bspc monitor HDMI-A-0 -d V VI VII VIII 
-    
-else
-   echo "Single Monitor"
-   # bspc monitor -d '' '' '' '' '' '' '' ''
-   bspc monitor -d I II III IV V VI VII VIII
-fi
-
 
 # Fix problems with Java GUIs https://wiki.archlinux.org/title/Bspwm#Problems_with_Java_applications
 wmname LG3D
