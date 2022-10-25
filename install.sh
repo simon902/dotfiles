@@ -30,7 +30,8 @@ backup_dir() {
   else
     cd ..
     cp -rL $(basename $1) ${CONFIG_ROOT}"/.backup/"$(basename $1)
-    rm -r $(basename $1) && mkdir $(basename $1)
+    find $(basename $1) -maxdepth 1 -type f,l -delete
+    #rm -rv $(basename $1) && mkdir $(basename $1)
   fi
 }
 
@@ -75,7 +76,7 @@ link_configs $link_path $link_path
 #### ZSH ####
 mkdir -p $HOME/.config/zsh/
 mkdir -p $HOME/.cache/zsh/
-touch $CONFIG_ROOT/.config/zsh/aliases
+touch $CONFIG_ROOT/.config/zsh/aliases # if file already existed touch doesn't override
 
 cp $HOME/.zshenv ${CONFIG_ROOT}"/.backup/"
 rm $HOME/.zshenv
@@ -94,6 +95,9 @@ ln -s $CONFIG_ROOT/.config/starship.toml $HOME/.config/starship.toml
 
 #### BSPWM ####
 mkdir -p $HOME/.config/bspwm/
+
+
+[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate TRUE' > $CONFIG_ROOT/.config/bspwm/screen.conf
 
 link_path="/.config/bspwm/"
 link_configs $link_path $link_path
