@@ -1,26 +1,39 @@
 {
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "One Monokai Dark",
   "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
+  "editor.wordWrap": "on",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
   "vim.ignorecase": true,
   "vim.smartcase": false,
   "vim.hlsearch": true,
+  "vim.useSystemClipboard": true,
 
+  "liveServer.settings.donotShowInfoMsg": true,
+  "html.format.contentUnformatted": "",
+  "emmet.triggerExpansionOnTab": true,
+  "files.associations": { "*html": "html" },
+  "emmet.useInlineCompletions": true,
+
+  "haskell.manageHLS": "PATH",
   "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-8.10.7",
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
 
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
   "tabnine.experimentalAutoImports": true,
+
+  // Language Settings
+  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd",
   "C_Cpp.intelliSenseEngine": "Disabled",
   "clangd.fallbackFlags": [
     // "-std=c++17"
   ],
-
   "[cpp]": {
     "editor.wordBasedSuggestions": false,
     "editor.suggest.insertMode": "replace",
@@ -53,13 +66,5 @@
         "color": "#9f0af5" // purple, go Pirates!
       }
     ]
-  },
-  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd",
-  "haskell.manageHLS": "PATH",
-  "liveServer.settings.donotShowInfoMsg": true,
-  "editor.formatOnSave": true,
-  "html.format.contentUnformatted": "",
-  "emmet.triggerExpansionOnTab": true,
-  "files.associations": { "*html": "html" },
-  "emmet.useInlineCompletions": true
+  }
 }
