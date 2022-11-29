@@ -164,3 +164,9 @@ mkdir -p $HOME/.config/redshift
 
 link_path="/.config/redshift/"
 link_configs $link_path $link_path
+
+
+#### .local/bin ####
+cp $HOME/.gdbinit ${CONFIG_ROOT}"/.backup/".gdbinit
+rm $HOME/.gdbinit
+ln -s $CONFIG_ROOT/.gdbinit $HOME/.gdbinit
