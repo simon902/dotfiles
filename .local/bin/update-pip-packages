@@ -1,5 +1,7 @@
 #!/bin/env python3
 
+# From: https://stackoverflow.com/questions/2720014/how-to-upgrade-all-python-packages-with-pip?page=1&tab=scoredesc#tab-top
+
 import pkg_resources
 from subprocess import call
 
