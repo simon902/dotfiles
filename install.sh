@@ -85,6 +85,12 @@ ln -s $CONFIG_ROOT/.zshenv $HOME/.zshenv
 link_path="/.config/zsh/"
 link_configs $link_path $link_path
 
+cd $CONFIG_ROOT"/.config/zsh/scripts/"
+[ ! -d "fzf-tab" ] && git clone https://github.com/Aloxaf/fzf-tab
+[ ! -d "z.lua" ] && git clone https://github.com/skywind3000/z.lua.git
+
+cd $CONFIG_ROOT
+
 
 #### Starship ####
 
