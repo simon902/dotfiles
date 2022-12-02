@@ -66,5 +66,6 @@
         "color": "#9f0af5" // purple, go Pirates!
       }
     ]
-  }
+  },
+  "window.zoomLevel": 1
 }
