@@ -105,6 +105,8 @@ alias l.='exa -a | grep "^\."'
 alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
 
 
+source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
+eval "$(lua $HOME/repos/dotfiles/.config/zsh/scripts/z.lua/z.lua --init zsh)"
 source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

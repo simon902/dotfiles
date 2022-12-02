@@ -85,6 +85,12 @@ ln -s $CONFIG_ROOT/.zshenv $HOME/.zshenv
 link_path="/.config/zsh/"
 link_configs $link_path $link_path
 
+cd $CONFIG_ROOT"/.config/zsh/scripts/"
+[ ! -d "fzf-tab" ] && git clone https://github.com/Aloxaf/fzf-tab
+[ ! -d "z.lua" ] && git clone https://github.com/skywind3000/z.lua.git
+
+cd $CONFIG_ROOT
+
 
 #### Starship ####
 
@@ -97,7 +103,7 @@ ln -s $CONFIG_ROOT/.config/starship.toml $HOME/.config/starship.toml
 mkdir -p $HOME/.config/bspwm/
 
 
-[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate TRUE' > $CONFIG_ROOT/.config/bspwm/screen.conf
+[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate FALSE' > $CONFIG_ROOT/.config/bspwm/screen.conf
 
 link_path="/.config/bspwm/"
 link_configs $link_path $link_path
