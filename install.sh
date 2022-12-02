@@ -103,7 +103,7 @@ ln -s $CONFIG_ROOT/.config/starship.toml $HOME/.config/starship.toml
 mkdir -p $HOME/.config/bspwm/
 
 
-[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate TRUE' > $CONFIG_ROOT/.config/bspwm/screen.conf
+[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate FALSE' > $CONFIG_ROOT/.config/bspwm/screen.conf
 
 link_path="/.config/bspwm/"
 link_configs $link_path $link_path
