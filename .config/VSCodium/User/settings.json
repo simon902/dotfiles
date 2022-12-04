@@ -29,7 +29,7 @@
   "tabnine.experimentalAutoImports": true,
 
   // Language Settings
-  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/14.0.3/clangd_14.0.3/bin/clangd",
+  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.3/clangd_15.0.3/bin/clangd",
   "C_Cpp.intelliSenseEngine": "Disabled",
   "clangd.fallbackFlags": [
     // "-std=c++17"

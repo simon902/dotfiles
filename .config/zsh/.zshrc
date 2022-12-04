@@ -9,6 +9,7 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+nitch
 #neofetch
 #colorscript random
 
