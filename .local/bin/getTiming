@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+printUsage()
+{
+  echo "Usage: getTiming <program> <timeout in seconds>"
+  exit -1
+}
+
+getTiming()
+{
+  timing=$((time $0) 2>&1 > /dev/null | grep real | awk '{ print substr($2,3,5) }')
+  echo $1 $timing
+  echo $timing >> timings
+}
+export -f getTiming
+
+if [ $# -ne 2 ]; then
+  printUsage
+fi
+
+[ -f $1 ] || printUsage # check if program exists 
+[ $2 -eq $2 2>/dev/null ] || printUsage # timeout not integer
+
+
+[ -f timings ] && > timings
+
+for ((i = 0; i < 5; i++)); do
+  timeout 10s bash -c getTiming $1 $i
+  [ $? -ne 0 ] && awk '{sum+=$1}END{printf "Count=%d\tAverage=%f\n", NR, sum/NR}' "timings" && echo "Stopped after $i iterations" && exit -1 
+done
+
+awk '{sum+=$1}END{printf "Count=%d\tAverage=%f\n", NR, sum/NR}' "timings"
