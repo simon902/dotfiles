@@ -9,24 +9,30 @@ function run {
 
 # Multiple Monitors
 
+function getScreenRatio() {
+	echo $(xrandr | grep $1 -A 1 | sed '2q;d' | awk '{ print $1}')
+}
+
 # --------
-DuplicateScreen()
+function DuplicateScreen()
 {
   echo "--- Duplicate Screen ---"
   first_monitor=$(echo $MONITORS | cut -d' ' -f 1)
-  monitors=$(echo $MONITORS | cut -d' ' -f 2-)
+  xrandr --output $first_monitor --primary --mode $(getScreenRatio $first_monitor)
   bspc monitor $first_monitor -d I II III IV V VI VII VIII
 
+  monitors=$(echo $MONITORS | cut -d' ' -f 2-)
   while IFs= read -r monitor; do
     echo $monitor
     #bspc monitor $monitor -d I II III IV V VI VII VIII
-    xrandr --output $monitor --primary --mode 1920x1080 --same-as $first_monitor
+    echo $(getScreenRatio $monitor)
+    xrandr --output $monitor --primary --mode $(getScreenRatio $monitor) --same-as $first_monitor
     
   done <<< "$monitors"
 }
 
 # --------
-SplitScreen()
+function SplitScreen()
 {
   echo "--- Split Screen ---"
   
@@ -38,19 +44,20 @@ SplitScreen()
   for monitor in $monitor_sequence; do
     
     echo "" ; echo "Settings for $monitor"
+    monitor_ratio=$(getScreenRatio $monitor)
 
     if [[ $monitor = $monitor_primary ]]; then
-      echo "Found primary monitor $monitor_primary"
+      echo "Found primary monitor $monitor_primary with ratio $monitor_ratio"
       placing_left=False
-      xrandr --output $monitor --primary --mode 1920x1080
+      xrandr --output $monitor --primary --mode $monitor_ratio
       bspc monitor $monitor -d I II III IV
     elif [[ $placing_left = True ]]; then
-      echo "Placing $monitor left of primary $monitor_primary"
-      xrandr --output $monitor --mode 1920x1080 --left-of $monitor_primary
+      echo "Placing $monitor left of primary $monitor_primary with ratio $monitor_ratio"
+      xrandr --output $monitor --mode $monitor_ratio --left-of $monitor_primary
       bspc monitor $monitor -d V VI VII VIII 
     else
-      echo "Placing $monitor right of primary $monitor_primary"
-      xrandr --output $monitor --mode 1920x1080 --right-of $monitor_primary
+      echo "Placing $monitor right of primary $monitor_primary with ratio $monitor_ratio"
+      xrandr --output $monitor --mode $monitor_ratio --right-of $monitor_primary
       bspc monitor $monitor -d V VI VII VIII 
     fi
   done
