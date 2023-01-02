@@ -88,6 +88,7 @@ link_configs $link_path $link_path
 cd $CONFIG_ROOT"/.config/zsh/scripts/"
 [ ! -d "fzf-tab" ] && git clone https://github.com/Aloxaf/fzf-tab
 [ ! -d "z.lua" ] && git clone https://github.com/skywind3000/z.lua.git
+[ ! -d "zsh-fzf-history-search" ] && git clone https://github.com/joshskidmore/zsh-fzf-history-search.git
 
 cd $CONFIG_ROOT
 
