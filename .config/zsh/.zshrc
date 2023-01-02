@@ -20,6 +20,7 @@ HISTSIZE=1000000000
 SAVEHIST=1000000000
 HISTFILE=~/.cache/zsh/history
 
+# man 1 zshoptions
 setopt SHARE_HISTORY # includes INC_APPEND_HISTORY, EXTENDED_HISTORY
 setopt HIST_FIND_NO_DUPS
 setopt HIST_IGNORE_ALL_DUPS
@@ -33,11 +34,13 @@ zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 
 
 # for all completions: color
 #eval "$(dircolors)"
-. /usr/share/LS_COLORS/dircolors.sh
+export LS_COLORS="$(vivid generate molokai)" # https://github.com/sharkdp/vivid
+#. /usr/share/LS_COLORS/dircolors.sh
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Man Pages
+# FZF: F1/F2 to cycle through groups
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:manuals' separate-sections true
