@@ -1,12 +1,11 @@
 {
-  "workbench.colorTheme": "One Monokai Dark",
+  "workbench.colorTheme": "One Monokai",
   "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
-  "editor.wordWrap": "on",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
 
@@ -67,5 +66,7 @@
       }
     ]
   },
-  "window.zoomLevel": 1
+  "[latex]": {
+    "editor.wordWrap": "on",
+  }
 }
