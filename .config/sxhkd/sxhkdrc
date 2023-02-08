@@ -109,6 +109,9 @@ super + w
 super + e
         pcmanfm
 
+super + r
+	alacritty -e ranger
+
 # Rofi
 super + shift + Return
         $HOME/.config/rofi/bin/launcher
