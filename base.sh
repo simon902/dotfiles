@@ -3,6 +3,7 @@ reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 
 
 ln -sf /usr/share/zoneinfo/Europe/Vienna /etc/localtime
 hwclock --systohc
+timedatectl set-ntp true
 sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" >> /etc/locale.conf
@@ -15,7 +16,7 @@ echo "127.0.0.1 simon-arch.localdomain simon-arch" >> /etc/hosts
 
 passwd root
 
-pacman -S terminus-font grub efibootmgr networkmanager network-manager-applet wpa_supplicant git reflector zsh linux-headers bluez bluez-utils xdg-utils xdg-user-dirs rsync openssh neofetch htop libvirt
+pacman -S terminus-font grub efibootmgr networkmanager network-manager-applet wpa_supplicant git reflector zsh linux-headers bluez bluez-utils xdg-utils xdg-user-dirs rsync openssh neofetch htop libvirt ntp
 
 
 # if AMD GPU
@@ -33,6 +34,7 @@ systemctl enable libvirtd
 systemctl enable virtlogd.socket
 systemctl enable firewalld
 systemctl enable acpid
+systemctl enable ntpd
 # systemctl enable bluetooth
 # systemctl enable sshd
 
