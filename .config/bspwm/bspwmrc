@@ -28,6 +28,11 @@ bspc config merge_overlapping_monitors true
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+# IMPORTANT !!!
+# Tell bspwm the order of the monitors used for switching with:
+# bspc desktop -f '^{1-9}'
+bspc wm -O $((< "$HOME/.config/bspwm/screen.json" jq -r '.bspwm_sequence | @sh') | tr -d \')
+
 # To focus from tiled to floating window
 bspc config directional_focus_tightness low
 
@@ -47,8 +52,6 @@ bspc config active_border_color		"#1e1e1e"
 bspc config focused_border_color	"#5e81ac"
 bspc config presel_feedback_color	"#5e81ac"
 
-# Switch monitors cause BSPWM is too stupid to do it automatically
-bspc monitor $HDMI -s $DP
 
 #Fullscreen applications
 bspc rule -a Vlc state=fullscreen
@@ -67,3 +70,8 @@ bspc rule -a Qemu-system-x86_64 state=floating
 #open applications on specific workspaces
 bspc rule -a discord desktop='^8' follow=on
 bspc rule -a Spotify desktop='^8' follow=on
+
+
+# Remove desktop "Desktop" that gets created when mirror screen is activated 
+# Why ??
+bspc query -D --names | grep Desktop && bspc desktop Desktop -r
