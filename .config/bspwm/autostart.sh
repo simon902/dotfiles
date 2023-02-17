@@ -110,3 +110,4 @@ if ! pgrep lxpolkit; then
 	/usr/bin/lxpolkit &
 fi
 
+pgrep bspswallow || bspswallow &
