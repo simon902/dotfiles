@@ -104,7 +104,17 @@ ln -s $CONFIG_ROOT/.config/starship.toml $HOME/.config/starship.toml
 mkdir -p $HOME/.config/bspwm/
 
 
-[[ -f "$CONFIG_ROOT/.config/bspwm/screen.conf" ]] || printf '%s\n' 'monitor_primary ' 'monitor_sequence ' 'duplicate FALSE' > $CONFIG_ROOT/.config/bspwm/screen.conf
+if [[ ! -f "$CONFIG_ROOT/.config/bspwm/screen.json" ]]; then
+  echo "SCREEN TEMPLATE"
+  SCREEN_CONF_DIR="$CONFIG_ROOT/.config/bspwm/screen.json"
+  cp "$CONFIG_ROOT/.config/bspwm/template/screen.json" $SCREEN_CONF_DIR
+
+  monitor_sequence=$(xrandr -q | awk '$2 ~ /(dis)?connected/ {print "\""$1}' ORS='", ')
+
+  jq -r '.monitor_primary='"$(echo $monitor_sequence | cut -d',' -f 1)" $SCREEN_CONF_DIR | sponge $SCREEN_CONF_DIR
+  jq -r '.monitor_sequence=['"${monitor_sequence::-2}"']' $SCREEN_CONF_DIR | sponge $SCREEN_CONF_DIR
+  jq -r '.bspwm_sequence=['"${monitor_sequence::-2}"']' $SCREEN_CONF_DIR | sponge $SCREEN_CONF_DIR
+fi
 
 link_path="/.config/bspwm/"
 link_configs $link_path $link_path

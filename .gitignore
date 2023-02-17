@@ -1,6 +1,6 @@
 aliases
 .backup
-screen.conf
+.config/bspwm/screen.json
 
 # zsh plugins
 fzf-tab

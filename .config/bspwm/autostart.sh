@@ -10,7 +10,8 @@ function run {
 # Multiple Monitors
 
 function getScreenRatio() {
-	echo $(xrandr | grep $1 -A 1 | sed '2q;d' | awk '{ print $1}')
+	#echo $(xrandr | grep $1 -A 1 | sed '2q;d' | awk '{ print $1}')
+  echo "1920x1080"
 }
 
 # --------
@@ -26,7 +27,7 @@ function DuplicateScreen()
     echo $monitor
     #bspc monitor $monitor -d I II III IV V VI VII VIII
     echo $(getScreenRatio $monitor)
-    xrandr --output $monitor --primary --mode $(getScreenRatio $monitor) --same-as $first_monitor
+    xrandr --output $monitor --mode $(getScreenRatio $monitor) --same-as $first_monitor
     
   done <<< "$monitors"
 }
@@ -36,8 +37,8 @@ function SplitScreen()
 {
   echo "--- Split Screen ---"
   
-  monitor_primary=$(grep -e "monitor_primary" $HOME"/.config/bspwm/screen.conf" | cut -d' ' -f2-)
-  monitor_sequence=$(grep -e "monitor_sequence" $HOME"/.config/bspwm/screen.conf" | cut -d' ' -f2-)
+  monitor_primary=$(jq -r '.monitor_primary' $SCREEN_CONFIG)
+  monitor_sequence=$((< $SCREEN_CONFIG jq -r '.monitor_sequence | @sh') | tr -d \')
 
   placing_left=True
 
@@ -71,12 +72,16 @@ function SplitScreen()
 MONITORS=$(xrandr | awk '$2 == "connected" { print $1 }')
 echo $MONITORS
 
-if [[ $(cat ${HOME}"/.config/bspwm/screen.conf" | awk '$1 == "duplicate" { print $2}') = "TRUE" ]]; then
- DuplicateScreen $MONITORS
-else
-  SplitScreen
-fi
+SCREEN_CONFIG="$HOME/.config/bspwm/screen.json"
 
+do_mirror=$(jq -r '.duplicate' $SCREEN_CONFIG ) 
+
+
+case $do_mirror in
+  true) DuplicateScreen $MONITORS;;
+  false) SplitScreen $MONITORS;;
+  *) SplitScreen $MONITORS;;
+esac
 
 
 xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Speed" -0.7
