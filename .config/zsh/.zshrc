@@ -110,7 +110,7 @@ alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p h
 # Pacman
 alias pkglist='pacman -Qqe | grep -v "$(pacman -Qqm)"'
 alias aurlist='pacman -Qqe | grep "$(pacman -Qqm)"'
-
+alias memdir='du . -hd 1 | sort -hr'
 
 source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
 source $HOME/repos/dotfiles/.config/zsh/scripts/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh 2> /dev/null
