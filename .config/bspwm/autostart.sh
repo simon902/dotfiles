@@ -17,19 +17,25 @@ function getScreenRatio() {
 # --------
 function DuplicateScreen()
 {
-  echo "--- Duplicate Screen ---"
-  first_monitor=$(echo $MONITORS | cut -d' ' -f 1)
-  xrandr --output $first_monitor --primary --mode $(getScreenRatio $first_monitor)
-  bspc monitor $first_monitor -d I II III IV V VI VII VIII
+  echo "--- Duplicate Screen ---" ; echo ""
 
-  monitors=$(echo $MONITORS | cut -d' ' -f 2-)
-  while IFs= read -r monitor; do
-    echo $monitor
-    #bspc monitor $monitor -d I II III IV V VI VII VIII
-    echo $(getScreenRatio $monitor)
-    xrandr --output $monitor --mode $(getScreenRatio $monitor) --same-as $first_monitor
-    
-  done <<< "$monitors"
+  monitor_primary=$(jq -r '.monitor_primary' $SCREEN_CONFIG)
+  monitor_sequence=$((< $SCREEN_CONFIG jq -r '.monitor_sequence | @sh') | tr -d \')
+
+  for monitor in $monitor_sequence; do
+    monitor_ratio=$(getScreenRatio $monitor)
+
+    if [[ $monitor = $monitor_primary ]]; then
+      echo "Found primary monitor $monitor_primary with ratio $monitor_ratio"
+      xrandr --output $monitor_primary --primary --mode $monitor_ratio
+      bspc monitor $monitor -d I II III IV V VI VII VIII
+    else
+      echo "Found $monitor with ratio $monitor_ratio"
+      #bspc monitor $monitor -d I II III IV V VI VII VIII
+      xrandr --output $monitor --mode $monitor_ratio --same-as $monitor_primary
+    fi
+  done
+  echo ""
 }
 
 # --------
@@ -62,6 +68,7 @@ function SplitScreen()
       bspc monitor $monitor -d V VI VII VIII 
     fi
   done
+  echo ""
      # bspc monitor -d '' '' '' '' '' '' '' ''
 }
 
