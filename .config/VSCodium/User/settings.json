@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "One Monokai",
+  "workbench.colorTheme": "One Monokai Dark",
   "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
 
   "editor.renderWhitespace": "all",
@@ -28,11 +28,9 @@
   "tabnine.experimentalAutoImports": true,
 
   // Language Settings
-  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.3/clangd_15.0.3/bin/clangd",
+  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
   "C_Cpp.intelliSenseEngine": "Disabled",
-  "clangd.fallbackFlags": [
-    // "-std=c++17"
-  ],
+  "clangd.fallbackFlags": ["-std=c++17"],
   "[cpp]": {
     "editor.wordBasedSuggestions": false,
     "editor.suggest.insertMode": "replace",
@@ -67,6 +65,6 @@
     ]
   },
   "[latex]": {
-    "editor.wordWrap": "on",
+    "editor.wordWrap": "on"
   }
 }
