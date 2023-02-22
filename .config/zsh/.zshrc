@@ -52,6 +52,9 @@ autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 
+# Use beam shape cursor for each new prompt.
+preexec() { echo -ne '\e[5 q' ;} 
+
 
 # Copies the contents of a given file to the system or X Windows clipboard
 function copyfile {
