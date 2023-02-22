@@ -187,3 +187,9 @@ link_configs $link_path $link_path
 cp $HOME/.gdbinit ${CONFIG_ROOT}"/.backup/".gdbinit
 rm $HOME/.gdbinit
 ln -s $CONFIG_ROOT/.gdbinit $HOME/.gdbinit
+
+
+#### git ####
+cp $HOME/.gitconfig ${CONFIG_ROOT}"/.backup/"
+rm $HOME/.gitconfig
+ln -s $CONFIG_ROOT/.gitconfig $HOME/.gitconfig
