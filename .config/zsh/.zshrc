@@ -52,11 +52,55 @@ autoload -Uz compinit && compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 
-# VI mode
-bindkey -v
-export KEYTIMEOUT=1
 
-bindkey '^[[3~' vi-delete-char
+# Copies the contents of a given file to the system or X Windows clipboard
+function copyfile {
+  emulate -L zsh
+  xclip -in -selection clipboard < "${1:-/dev/stdin}"
+}
+
+
+# Aliases
+#
+source $HOME/repos/dotfiles/.config/zsh/aliases
+
+alias vim='nvim'
+alias rg='. ranger'
+
+alias grep='grep --color=auto'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
+
+# 'Exa': Replacement for 'ls'
+alias ls='exa -al --color=always --group-directories-first'
+alias la='exa -a --color=always --group-directories-first'
+alias ll='exa -l --color=always --group-directories-first'
+alias lt='exa -aT --color=always --group-directories-first'
+alias l.='exa -a | grep "^\."'
+
+# Pacman
+alias pkglist='pacman -Qqe | grep -v "$(pacman -Qqm)"'
+alias aurlist='pacman -Qqe | grep "$(pacman -Qqm)"'
+
+# Misc
+alias memdir='du . -hd 1 | sort -hr'
+alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
+alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+
+
+
+# Plugins
+#
+source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
+source $HOME/repos/dotfiles/.config/zsh/scripts/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh 2> /dev/null
+eval "$(lua $HOME/repos/dotfiles/.config/zsh/scripts/z.lua/z.lua --init zsh)"
+source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
+
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
+
+# VI mode
+source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
 
 # Change cursor shape for different vi modes.
 function zle-keymap-select {
@@ -79,46 +123,6 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
-
-# Copies the contents of a given file to the system or X Windows clipboard
-function copyfile {
-  emulate -L zsh
-  xclip -in -selection clipboard < "${1:-/dev/stdin}"
-}
-
-
-# Aliases
-
-source $HOME/repos/dotfiles/.config/zsh/aliases
-
-alias vim='nvim'
-alias rg='. ranger'
-
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-
-# 'Exa': Replacement for 'ls'
-alias ls='exa -al --color=always --group-directories-first'
-alias la='exa -a --color=always --group-directories-first'
-alias ll='exa -l --color=always --group-directories-first'
-alias lt='exa -aT --color=always --group-directories-first'
-alias l.='exa -a | grep "^\."'
-
-alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
-
-# Pacman
-alias pkglist='pacman -Qqe | grep -v "$(pacman -Qqm)"'
-alias aurlist='pacman -Qqe | grep "$(pacman -Qqm)"'
-alias memdir='du . -hd 1 | sort -hr'
-
-source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
-source $HOME/repos/dotfiles/.config/zsh/scripts/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh 2> /dev/null
-eval "$(lua $HOME/repos/dotfiles/.config/zsh/scripts/z.lua/z.lua --init zsh)"
-source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
-
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 
 # Starship Prompt
 case $(tty) in
