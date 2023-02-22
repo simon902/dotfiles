@@ -39,6 +39,7 @@
     "editor.semanticHighlighting.enabled": true,
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
+    "editor.defaultFormatter": "xaver.clang-format",
     "editor.rulers": [
       //{
       //"column": 80,    // spacing of 1st column from left
