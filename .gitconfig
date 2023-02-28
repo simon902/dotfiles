@@ -20,7 +20,7 @@
 
 [delta]
     features = decorations
-    syntax-theme = Monokai Extended
+    syntax-theme = Monokai Extended Bright
 
 [merge]
     conflictstyle = diff3
