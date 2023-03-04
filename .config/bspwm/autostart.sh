@@ -118,7 +118,7 @@ run dunst
 
 #xbacklight -set 40
 
-pgrep bspswallow || ~/.local/bin/bspswallow &
+pgrep bspswallow || ~/.local/scripts/bspswallow &
 
 if ! pgrep lxpolkit; then
 	/usr/bin/lxpolkit &

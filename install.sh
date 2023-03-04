@@ -135,10 +135,10 @@ link_path="/.config/polybar/"
 link_configs $link_path"conf1" $link_path
 
 
-#### .local/bin ####
-mkdir -p $HOME/.local/bin
+#### .local/scripts ####
+mkdir -p $HOME/.local/scripts
 
-link_path="/.local/bin/"
+link_path="/.local/scripts/"
 link_configs $link_path $link_path
 
 
