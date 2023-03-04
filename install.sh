@@ -169,21 +169,21 @@ link_path="/.config/mpd/"
 link_configs $link_path $link_path
 
 
-#### .local/bin ####
+#### mpv ####
 mkdir -p $HOME/.config/mpv
 
 link_path="/.config/mpv/"
 link_configs $link_path $link_path
 
 
-#### .local/bin ####
+#### redshift ####
 mkdir -p $HOME/.config/redshift
 
 link_path="/.config/redshift/"
 link_configs $link_path $link_path
 
 
-#### .local/bin ####
+#### gdb ####
 cp $HOME/.gdbinit ${CONFIG_ROOT}"/.backup/".gdbinit
 rm $HOME/.gdbinit
 ln -s $CONFIG_ROOT/.gdbinit $HOME/.gdbinit
