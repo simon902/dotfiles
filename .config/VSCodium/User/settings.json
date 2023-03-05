@@ -39,7 +39,6 @@
     "--pretty",
     "--all-scopes-completion",
     "--completion-style=bundled",
-    "--cross-file-rename",
     "--header-insertion=iwyu",
     "--header-insertion-decorators",
     "--background-index",
