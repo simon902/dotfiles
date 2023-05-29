@@ -148,3 +148,5 @@ super + shift + l
 super + shift + s
   changeMirrorScreen
 
+super + Escape
+  xkill

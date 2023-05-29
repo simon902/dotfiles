@@ -5,6 +5,7 @@ path+=('/home/simon/.local/scripts')
 path+=('/home/simon/.cabal/bin')
 path+=('/home/simon/.ghcup/bin')
 export PATH
+#export PATH="/usr/lib/ccache/bin/:$PATH"
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 export LIBVA_DRIVER_NAME=vdpau

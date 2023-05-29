@@ -66,6 +66,7 @@ bspc rule -a Nitrogen state=floating
 bspc rule -a Pavucontrol state=floating sticky=on
 bspc rule -a Stacer state=floating
 bspc rule -a Qemu-system-x86_64 state=floating
+bspc rule -a matplotlib state=floating
 
 #open applications on specific workspaces
 bspc rule -a discord desktop='^8' follow=on
