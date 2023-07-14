@@ -1,9 +1,9 @@
 export ZDOTDIR=$HOME/.config/zsh
 
-path+=('/home/simon/.local/bin')
-path+=('/home/simon/.local/scripts')
-path+=('/home/simon/.cabal/bin')
-path+=('/home/simon/.ghcup/bin')
+path+=($HOME"/.local/bin")
+path+=($HOME"/.local/scripts")
+path+=($HOME"/.cabal/bin")
+path+=($HOME"/.ghcup/bin")
 export PATH
 #export PATH="/usr/lib/ccache/bin/:$PATH"
 
