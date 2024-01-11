@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #LAUNCHERS
 $HOME/.config/bspwm/autostart.sh
