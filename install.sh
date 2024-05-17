@@ -56,14 +56,24 @@ cp $HOME/.xinitrc ${CONFIG_ROOT}"/.backup/"
 rm $HOME/.xinitrc
 ln -s $CONFIG_ROOT/.xinitrc $HOME/.xinitrc
 
+cp $HOME/.Xresources ${CONFIG_ROOT}"/.backup/"
+rm $HOME/.Xresources
+ln -s $CONFIG_ROOT/.Xresources $HOME/.Xresources
+xrdb -load $HOME/.Xresources
+
 
 #### XDG Default Applications ####
-xdg-mime default sxiv.desktop image/jpeg
-xdg-mime default sxiv.desktop image/png
+xdg-mime default nsxiv.desktop image/jpeg
+xdg-mime default nsxiv.desktop image/png
+
 xdg-mime default mpv.desktop video/mp4
 xdg-mime default mpv.desktop video/x-matroska
+
 xdg-mime default org.pwmt.zathura.desktop application/pdf
-xdg-mime default codium.desktop text/plain
+xdg-mime default org.pwmt.zathura.desktop image/vnd.djvu
+xdg-mime default foliate.desktop application/epub+zip
+
+xdg-mime default nvim.desktop text/plain
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
@@ -134,7 +144,7 @@ link_configs $link_path $link_path
 mkdir -p $HOME/.config/polybar/
 
 link_path="/.config/polybar/"
-link_configs $link_path"conf1" $link_path
+link_configs $link_path"conf2" $link_path
 
 
 #### .local/scripts ####
