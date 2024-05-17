@@ -3,10 +3,10 @@
 killall polybar
 alias poly="polybar -c ~/.config/polybar/config.ini"
 
-poly status &
-poly status2 &
-poly workspaces-1 &
-poly workspaces-2 &
+primary_monitor=$(jq -r '.monitor_primary' $HOME/.config/bspwm/screen.json)
+secondary_monitor=$(jq -r '.monitor_sequence.[] | select(.!="'$primary_monitor'")' $HOME/.config/bspwm/screen.json | head -n 1)
 
-#poly status-laptop &
-#poly workspaces-laptop &
+MONITOR=$primary_monitor   poly status &
+MONITOR=$secondary_monitor poly status2 &
+MONITOR=$primary_monitor   poly workspaces-1 &
+MONITOR=$secondary_monitor poly workspaces-2 &
