@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# https://codeberg.org/nsxiv/nsxiv-extra/src/branch/master/scripts/nsxiv-rifle
 TMPDIR="${TMPDIR:-/tmp}"
 tmp="$TMPDIR/nsxiv_rifle_$$"
 
