@@ -39,7 +39,7 @@ super + shift + {1-7,0}
 
 # Swap window in direction
 super + shift {Left,Down,Up,Right}
-    bspc node -s {west,sout,north,east} --follow
+    bspc node -s {west,south,north,east} --follow
 
 
 
