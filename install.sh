@@ -144,7 +144,7 @@ link_configs $link_path $link_path
 mkdir -p $HOME/.config/polybar/
 
 link_path="/.config/polybar/"
-link_configs $link_path"conf2" $link_path
+link_configs $link_path"conf1" $link_path
 
 
 #### .local/scripts ####
@@ -205,3 +205,10 @@ ln -s $CONFIG_ROOT/.gdbinit $HOME/.gdbinit
 cp $HOME/.gitconfig ${CONFIG_ROOT}"/.backup/"
 rm $HOME/.gitconfig
 ln -s $CONFIG_ROOT/.gitconfig $HOME/.gitconfig
+
+
+#### ranger ####
+mkdir -p $HOME/.config/ranger
+
+link_path="/.config/ranger/"
+link_configs $link_path $link_path

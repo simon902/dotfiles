@@ -16,7 +16,7 @@ export BROWSER=firefox
 export TERMINAL=alacritty
 export EDITOR=nvim
 export READER=zathura
-export IMAGE=sxiv
+export IMAGE=nsxiv
 export VIDEO=mpv
 
 export JDK_HOME=/usr/lib/jvm/java-11-openjdk

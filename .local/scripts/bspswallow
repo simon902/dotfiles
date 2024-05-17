@@ -45,11 +45,26 @@ get_ppid() {
 	ps -o ppid= -p $1
 }
 
+
+get_gppid_program() {
+	cmd_string=$(ps -o cmd= -p $1)
+	first_arg=$(echo $cmd_string | awk '{print $1}')
+
+	if [ "$first_arg" = "/bin/sh" ]; then
+		 echo $cmd_string | awk '{print $2}' | sed 's_^.*/__'
+	else
+		echo $first_arg | sed 's_^.*/__'
+	fi
+}
+
 check_swallowing_process() {
 	pid=$(get_pid $1)
 	[ -z $pid ] && return 0
+
 	gppid=$(get_ppid $(get_ppid $pid))
-	grep -i "^$(ps -o cmd= -p $gppid | awk '{print $1}' | sed 's_^.*/__')$" ~/.config/bspwm/terminals && return 0
+	[ $gppid -lt 1 ] && return 1
+
+	grep -i "^$(get_gppid_program "$gppid")$" ~/.config/bspwm/swallower && return 0
 	[ "$(get_ppid "$(get_ppid "$(get_pid "$1")")")" = "$(get_pid "$2")" ] && return 0 || return 1
 }
 
@@ -59,9 +74,10 @@ swallow() {
 
 	swallowerid=$1
 	swallowingid=$(bspc query -N -n last)
+
 	if [ "$addedtodesktop" = "$lasttermdesktop" ] && check_swallowing_process "$swallowerid" "$swallowingid"; then
-		grep -q "^$(get_class "$swallowerid")$" ~/.config/bspwm/{noswallow,terminals} && return
-		grep -i "^$(get_class "$swallowingid")$" ~/.config/bspwm/terminals || return
+		grep -q "^$(get_class "$swallowerid")$" ~/.config/bspwm/{noswallow,swallower} && return
+		grep -i "^$(get_class "$swallowingid")$" ~/.config/bspwm/swallower || return
 		echo "$swallowerid $swallowingid" >> /tmp/swallowids
 		bspc node "$swallowingid" --flag hidden=on
 	fi
@@ -86,9 +102,12 @@ bspc subscribe node_add node_remove | while read -r event
 do
 	case $(echo "$event" | awk '{ print $1 }') in
 		node_add)
+		echo "Swallow"
+		echo $event
             		swallow $(echo "$event" | awk '{print $5 " " $3}')
 			;;
 		node_remove)
+		echo "Spit"
 			spit $(echo "$event" | awk '{print $4 " " $3}')
 			;;
 	esac

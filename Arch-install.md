@@ -69,7 +69,7 @@
 - redshift
 - flameshot
 - ranger
-- sxiv
+- nsxiv
 - volumeicon
 - polybar                       (aur)
 - bspwm   
