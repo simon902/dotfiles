@@ -68,7 +68,7 @@ function copyfile {
 source $HOME/repos/dotfiles/.config/zsh/aliases
 
 alias vim='nvim'
-alias rg='. ranger'
+alias rg='source ranger'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
