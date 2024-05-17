@@ -15,6 +15,7 @@ link_configs() {
   cd $CONFIG_ROOT
 }
 
+# TODO: rewrite such that .backup stores correct path of files starting in $HOME
 backup_dir() {
   cd $HOME${1}
   
@@ -63,8 +64,10 @@ xrdb -load $HOME/.Xresources
 
 
 #### XDG Default Applications ####
-xdg-mime default nsxiv.desktop image/jpeg
-xdg-mime default nsxiv.desktop image/png
+xdg-mime default nsxiv-rifle.desktop image/jpeg
+xdg-mime default nsxiv-rifle.desktop image/jpg
+xdg-mime default nsxiv-rifle.desktop image/png
+xdg-mime default nsxiv-rifle.desktop image/gif
 
 xdg-mime default mpv.desktop video/mp4
 xdg-mime default mpv.desktop video/x-matroska
@@ -153,6 +156,14 @@ mkdir -p $HOME/.local/scripts
 link_path="/.local/scripts/"
 link_configs $link_path $link_path
 
+
+#### .local/share/applications ####
+mkdir -p $HOME/.local/share/applications
+
+link_path="/.local/share/applications/"
+# TODO: Fix file noit saved and rewrite backup_dir function 
+files=("nsxiv-rifle.desktop")
+link_configs $link_path $link_path "${files[@]}"
 
 #### VSCodium ####
 
