@@ -14,6 +14,7 @@ export VDPAU_DRIVER=nvidia
 # Default Programs
 export BROWSER=firefox
 export TERMINAL=alacritty
+export VISUAL=nvim
 export EDITOR=nvim
 export READER=zathura
 export IMAGE=nsxiv
