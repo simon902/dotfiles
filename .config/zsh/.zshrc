@@ -88,7 +88,7 @@ alias aurlist='pacman -Qqe | grep "$(pacman -Qqm)"'
 # Misc
 alias memdir='du . -hd 1 | sort -hr'
 alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
-alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --print0 | xargs -0 -o nvim'
 
 
 
