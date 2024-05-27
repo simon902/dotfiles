@@ -156,6 +156,8 @@ mkdir -p $HOME/.local/scripts
 link_path="/.local/scripts/"
 link_configs $link_path $link_path
 
+ln -s $(which alacritty) $HOME/.local/scripts/xterm
+
 
 #### .local/share/applications ####
 mkdir -p $HOME/.local/share/applications

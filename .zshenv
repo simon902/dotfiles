@@ -1,7 +1,7 @@
 export ZDOTDIR=$HOME/.config/zsh
 
-path+=($HOME"/.local/bin")
-path+=($HOME"/.local/scripts")
+path=($HOME"/.local/bin" $path)
+path=($HOME"/.local/scripts" $path)
 path+=($HOME"/.cabal/bin")
 path+=($HOME"/.ghcup/bin")
 export PATH
