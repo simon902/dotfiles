@@ -1,0 +1,3 @@
+#!/bin/sh
+
+xboxdrv --evdev /dev/input/event$1 -c $HOME/.local/scripts/xbox.conf --evdev-absmap ABS_Y=Y1,ABS_X=X1,ABS_RZ=Y2,ABS_Z=X2 --evdev-keymap BTN_EAST=a,BTN_SOUTH=x,BTN_NORTH=y,BTN_C=b,BTN_TR=rt,BTN_Z=rb,BTN_WEST=lb,BTN_TL=lt --mimic-xpad --silent
