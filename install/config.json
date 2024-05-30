@@ -6,26 +6,25 @@
     ".config/mpv",
     ".config/ranger",
     ".config/redshift",
-    ".config/rofi/bin",
-    ".config/rofi/themes",
+    ".config/rofi",
     ".config/starship.toml",
     ".config/sxhkd",
-    ".config/VSCodium/User",
+    ".config/VSCodium/User/keybindings.json",
+    ".config/VSCodium/User/settings.json",
     ".config/zsh",
-    ".zshenv",
     ".local/scripts",
     ".local/share/applications",
     ".gdbinit",
     ".gitconfig",
     ".xinitrc",
-    ".Xresources"
+    ".Xresources",
+    ".zshenv"
   ],
   "directories": [
     ".config/ncmpcpp",
     ".local/share/mpd",
     ".local/share/mpd/playlists",
-    ".cache/zsh",
-    ".config/zsh/scripts"
+    ".cache/zsh"
   ],
   "multi-configs": {
     "polybar": [

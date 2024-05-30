@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# if [[ -d .backup ]]; then
-#   read -p "Backup from earlier install exists. Do you want do delete it y/N: " delete
-
-#   if [[ $delete = 'y' || $delete = 'Y' ]]; then
-#     rm -rf .backup
-#    else
-#     exit -1
-#   fi
-# fi
-
-
 export CONFIG_ROOT=$(pwd)
 
 
@@ -37,8 +26,14 @@ xdg-mime default firefox.desktop x-scheme-handler/https
 # before python script
 # after folder creation
 # or change bspw/install.sh such that screen.conf is not in repo and only in ~/.config/bspwm
-./.config/bspwm/install.sh
-./.config/zsh/install.sh
+# ./.config/bspwm/install.sh
+# ./.config/zsh/install.sh
+
+# TODO:  
+# call dependenceis in linkconfigs.py
+
+
+python3 linkconfigs.py
 
 # in python install script
 xrdb -load $HOME/.Xresources

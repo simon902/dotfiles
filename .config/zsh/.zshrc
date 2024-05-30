@@ -48,7 +48,7 @@ zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:man.*' menu yes select
 
 
-autoload -Uz compinit && compinit
+autoload -Uz compinit && compinit -d ~/.cache/zsh/.zcompdump 
 _comp_options+=(globdots)		# Include hidden files.
 
 
