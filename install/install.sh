@@ -20,6 +20,8 @@ xdg-mime default nvim.desktop text/plain
 xdg-mime default firefox.desktop x-scheme-handler/http
 xdg-mime default firefox.desktop x-scheme-handler/https
 
+xdg-mime default ranger.desktop inode/directory
+
 
 
 
