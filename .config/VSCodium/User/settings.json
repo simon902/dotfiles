@@ -1,35 +1,29 @@
 {
   "workbench.colorTheme": "XD Theme - MixItUp",
   "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-
   "editor.renderWhitespace": "all",
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-
+  // "editor.formatOnSave": true,
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
   "vim.ignorecase": true,
   "vim.smartcase": false,
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
-
   "liveServer.settings.donotShowInfoMsg": true,
   "html.format.contentUnformatted": "",
   "emmet.triggerExpansionOnTab": true,
-  "files.associations": { 
+  "files.associations": {
     "*html": "html",
-    "*.pl" : "prolog"
-   },
+    "*.pl": "prolog"
+  },
   "emmet.useInlineCompletions": true,
-
   "haskell.manageHLS": "PATH",
-  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-8.10.7",
-
+  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
   "security.workspace.trust.untrustedFiles": "open",
   "telemetry.telemetryLevel": "off",
   "tabnine.experimentalAutoImports": true,
-
   // Language Settings
   "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
   "C_Cpp.errorSquiggles": "disabled",
@@ -69,7 +63,6 @@
       }
     ]
   },
-
   "[python]": {
     "editor.tabSize": 4,
     "editor.rulers": [
@@ -87,10 +80,42 @@
   "[latex]": {
     "editor.wordWrap": "on"
   },
-  
+  "[shellscript]": {
+    "editor.wordWrap": "on"
+  },
   "files.watcherExclude": {
     "**/.bloop": true,
     "**/.metals": true,
     "**/.ammonite": true
-  }
+  },
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "verilog.linting.linter": "verilator",
+  "latex-workshop.latex.external.build.args": [
+    "-shell-escape"
+  ],
+  "latex-workshop.latex.magic.args": [
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "-shell-escape",
+    "%DOC%"
+  ],
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-shell-escape",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "-pdf",
+        "-outdir=%OUTDIR%",
+        "%DOC%"
+      ],
+      "env": {}
+    },
+  ]
 }
