@@ -2,6 +2,13 @@ import json
 from pathlib import Path
 import os
 import shutil
+import subprocess
+from enum import Enum
+
+class DependencyType(Enum):
+    PRE = "pre"
+    POST = "post"
+
 
 HOME_PATH = Path(os.environ["HOME"])
 CONFIG_ROOT_PATH = Path()
@@ -39,7 +46,7 @@ def checkAndPromptBackupDeletion():
     exit(-1)
 
 
-def handleBackup(config):
+def checkForBackup(config):
 
     do_backup = False
 
@@ -55,6 +62,20 @@ def handleBackup(config):
             break
 
     return do_backup
+
+
+def runExecutable(exe : str, root_path=True, *args):
+    first_args = [exe]
+    if root_path:
+        first_args.append(CONFIG_ROOT_PATH)
+    subprocess.run(first_args + list(args), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+
+def handleDependencies(dependency_type : DependencyType):
+    dependency_path = CONFIG_ROOT_PATH / "install" / "dependencies" / dependency_type.value
+
+    for dependency in dependency_path.iterdir():
+        runExecutable(dependency)
 
 
 def createDirectory(path : Path):
@@ -102,12 +123,15 @@ def main():
     with open(config_file) as f:
         config = json.load(f)
 
-    do_backup = handleBackup(config)
+    do_backup = checkForBackup(config)
 
+    handleDependencies(DependencyType.PRE)
     createDirectories(config)
+
     linkConfigs(config, do_backup)
     handleMultipleConfigs(config)
 
+    handleDependencies(DependencyType.POST)
 
 if __name__ == '__main__':
     main()

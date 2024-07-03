@@ -2,6 +2,7 @@
   "files": [
     ".config/alacritty",
     ".config/bspwm",
+    ".config/mimeapps.list",
     ".config/mpd",
     ".config/mpv",
     ".config/ranger",
@@ -27,9 +28,6 @@
     ".cache/zsh"
   ],
   "multi-configs": {
-    "polybar": [
-      ".config/polybar/conf1",
-      ".config/polybar/conf2"
-    ]
+    "polybar": [".config/polybar/conf1", ".config/polybar/conf2"]
   }
 }
