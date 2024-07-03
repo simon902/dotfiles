@@ -28,6 +28,6 @@
     ".cache/zsh"
   ],
   "multi-configs": {
-    "polybar": [".config/polybar/conf1", ".config/polybar/conf2"]
+    "polybar": ".config/polybar"
   }
 }
