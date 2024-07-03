@@ -34,7 +34,8 @@ def checkAndPromptBackupDeletion():
         return False
     
     while True:
-        delete_backup = input("Backup from earlier install exists. Do you want do delete it y/N: ")
+        print("Backup from earlier install exists.\nDo you want do delete it y/N:")
+        delete_backup = input("==> ")
         if delete_backup == "" or delete_backup == "y" or delete_backup == "n":
             break
         print("Input \"y\" or \"n\"!")
@@ -48,20 +49,33 @@ def checkAndPromptBackupDeletion():
 
 def checkForBackup(config):
 
-    do_backup = False
+    def innerCeckForBackup(files, multi_config=False):
+        do_backup = False
 
-    for file in config["files"]:
-        link_src = CONFIG_ROOT_PATH / file
-        link_dest = HOME_PATH / file
+        for file in files:
+            link_src = CONFIG_ROOT_PATH / file
+            link_dest = HOME_PATH / file
 
-        if link_dest.exists() and not link_src == link_dest.resolve():
-            print(f"DO backup: {link_dest}")
+            if not link_dest.exists():
+                continue
+            if not multi_config and link_src == link_dest.resolve():
+                continue
+            if multi_config and link_src == link_dest.resolve().parent:
+                continue
+
+            # print(f"DO backup: {link_dest}")
             do_backup = True
             if checkAndPromptBackupDeletion():
                 shutil.rmtree(CONFIG_ROOT_PATH / ".backup")
             break
 
-    return do_backup
+        return do_backup
+    
+    if innerCeckForBackup(config["files"]):
+        return True
+    if innerCeckForBackup(config["multi-configs"].values(), True):
+        return True
+    return False
 
 
 def runExecutable(exe : str, root_path=True, *args):
@@ -87,33 +101,51 @@ def createDirectories(config):
         createDirectory(HOME_PATH / directory)
 
 
+def backupAndLinkFile(src : str, dest : str, do_backup : bool):
+    link_src = CONFIG_ROOT_PATH / src
+    link_dest = HOME_PATH / dest
+
+    if do_backup and link_dest.exists() and not link_src == link_dest.resolve():
+        backup_path = CONFIG_ROOT_PATH / ".backup" / dest
+        if link_dest.is_dir():
+            shutil.copytree(link_dest, backup_path)
+        else:
+            createDirectory(backup_path.parent)
+            backup_path.write_bytes(link_dest.read_bytes())
+
+    if link_dest.exists():
+        if link_dest.is_dir() and not link_dest.is_symlink():
+            shutil.rmtree(link_dest)
+        else:
+            link_dest.unlink()
+
+    link_dest.symlink_to(link_src)
+
+
 def linkConfigs(config, do_backup : bool):
 
     for file in config["files"]:
-        link_src = CONFIG_ROOT_PATH / file
-        link_dest = HOME_PATH / file
-
-        if do_backup and link_dest.exists() and not link_src == link_dest.resolve():
-            backup_path = CONFIG_ROOT_PATH / ".backup" / file
-            if link_dest.is_dir():
-                shutil.copytree(link_dest, backup_path)
-            else:
-                createDirectory(backup_path.parent)
-                backup_path.write_bytes(link_dest.read_bytes())
-
-        if link_dest.exists():
-            if link_dest.is_dir() and not link_dest.is_symlink():
-                shutil.rmtree(link_dest)
-            else:
-                link_dest.unlink()
+        backupAndLinkFile(file, file, do_backup)
 
 
-        link_dest.symlink_to(link_src)
+def handleMultipleConfigs(config, do_backup : bool):
+    for prog, path in config["multi-configs"].items():
+        path_ext = CONFIG_ROOT_PATH / path
+        config_dirs = [file.name for file in path_ext.iterdir()]
 
+        print(f"Multiple configs for {prog} found:")
+        for i, name in enumerate(config_dirs):
+            print(f"[{i + 1}] \t {name}")
+        print("\nPlease select an option by entering the number (default 1)")
+        while True:
+            user_choice = input("==> ")
+            if user_choice == "" or user_choice in [str(i) for i in range(1, len(config_dirs) + 1)]:
+                break
+        
+        user_choice = config_dirs[0] if user_choice == "" else config_dirs[int(user_choice) - 1]
 
-def handleMultipleConfigs(config):
-    # TODO
-    pass
+        backupAndLinkFile(Path(path) / user_choice, path, do_backup)
+
 
 
 def main():
@@ -129,7 +161,7 @@ def main():
     createDirectories(config)
 
     linkConfigs(config, do_backup)
-    handleMultipleConfigs(config)
+    handleMultipleConfigs(config, do_backup)
 
     handleDependencies(DependencyType.POST)
 
