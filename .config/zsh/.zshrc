@@ -96,12 +96,11 @@ alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}
 #
 ZVM_INIT_MODE=sourcing
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
-# Remove keybinding in order to use ^R of the zsh-fzf-history-search plugin
-bindkey -r "^R"
 
 source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
-source $HOME/repos/dotfiles/.config/zsh/scripts/zsh-fzf-history-search/zsh-fzf-history-search.plugin.zsh 2> /dev/null
-eval "$(lua $HOME/repos/dotfiles/.config/zsh/scripts/z.lua/z.lua --init zsh)"
+# fzf keybindings (history search) + completions
+source <(fzf --zsh)
+eval "$(zoxide init zsh)"
 source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
