@@ -82,8 +82,8 @@ alias lt='exa -aT --color=always --group-directories-first'
 alias l.='exa -a | grep "^\."'
 
 # Pacman
-alias pkglist='pacman -Qqe | grep -v "$(pacman -Qqm)"'
-alias aurlist='pacman -Qqe | grep "$(pacman -Qqm)"'
+alias pkglist='pacman -Qqen'
+alias aurlist='pacman -Qqem'
 
 # Misc
 alias memdir='du . -hd 1 | sort -hr'

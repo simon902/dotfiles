@@ -11,6 +11,9 @@
 
 - Firefox: set page size to A4 for printing
 
+### CPU
+
+https://wiki.archlinux.org/title/Microcode
 
 ### Graphics
 - mesa
@@ -135,6 +138,10 @@ Install **mesa**, **xf86-video-amdgpu**, **brillo** and maybe **acpilight** pack
 *ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl0", GROUP="video", MODE="0664"*.
 Add user to video group.
 
+acpi
+acpid
+acpilight
+
 https://www.youtube.com/watch?v=pGOaSS8nEQA
 
 ### Android USB Transfer
@@ -162,5 +169,4 @@ https://www.youtube.com/watch?v=pGOaSS8nEQA
 - Quokka.js
 - Tabnine
 - Vim
-
 
