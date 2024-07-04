@@ -75,9 +75,9 @@ alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # 'Exa': Replacement for 'ls'
-alias ls='exa -al --color=always --group-directories-first'
+alias ls='exa -al --color=always --group-directories-first --icons'
 alias la='exa -a --color=always --group-directories-first'
-alias ll='exa -l --color=always --group-directories-first'
+alias ll='exa -l --color=always --group-directories-first --icons'
 alias lt='exa -aT --color=always --group-directories-first'
 alias l.='exa -a | grep "^\."'
 
