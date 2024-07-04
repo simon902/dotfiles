@@ -108,7 +108,7 @@ def backupAndLinkFile(src : str, dest : str, do_backup : bool):
     if do_backup and link_dest.exists() and not link_src == link_dest.resolve():
         backup_path = CONFIG_ROOT_PATH / ".backup" / dest
         if link_dest.is_dir():
-            shutil.copytree(link_dest, backup_path)
+            shutil.copytree(link_dest, backup_path, symlinks=True)
         else:
             createDirectory(backup_path.parent)
             backup_path.write_bytes(link_dest.read_bytes())
@@ -132,6 +132,7 @@ def handleMultipleConfigs(config, do_backup : bool):
     for prog, path in config["multi-configs"].items():
         path_ext = CONFIG_ROOT_PATH / path
         config_dirs = [file.name for file in path_ext.iterdir()]
+        config_dirs.sort()
 
         print(f"Multiple configs for {prog} found:")
         for i, name in enumerate(config_dirs):
