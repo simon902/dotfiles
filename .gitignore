@@ -1,6 +1,7 @@
 aliases
 .backup
 .config/bspwm/screen.json
+.local/scripts/xterm
 
 # zsh plugins
 fzf-tab
