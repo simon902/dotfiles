@@ -13,7 +13,7 @@
 	unmerged = 9 normal
 	untracked = normal dim
 [core]
-	pager = delta
+	pager = less -LRs --mouse
 
 [interactive]
     diffFilter = delta --color-only
@@ -28,3 +28,10 @@
 [diff]
     colorMoved = default
 
+# https://github.com/dandavison/delta/issues/630
+[pager]
+	diff = LESS='LRc --mouse' delta
+	show = LESS='LRc --mouse' delta
+	stash = LESS='LRc --mouse' delta
+	log = LESS='LRc --mouse' delta
+	reflog = LESS='LRc --mouse' delta

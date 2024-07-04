@@ -40,7 +40,7 @@ bspc config directional_focus_tightness low
 #BSPWM gaps and padding
 bspc config window_gap           5
 bspc config border_width         3
-bspc config top_padding          34  # 48
+# Note: Do not set top_padding, this is handled in polybar [global/wm]
 bspc config bottom_padding       0 
 bspc config left_padding         0 
 bspc config right_padding        0

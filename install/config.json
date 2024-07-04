@@ -1,0 +1,33 @@
+{
+  "files": [
+    ".config/alacritty",
+    ".config/bspwm",
+    ".config/mimeapps.list",
+    ".config/mpd",
+    ".config/mpv",
+    ".config/ranger",
+    ".config/redshift",
+    ".config/rofi",
+    ".config/starship.toml",
+    ".config/sxhkd",
+    ".config/VSCodium/User/keybindings.json",
+    ".config/VSCodium/User/settings.json",
+    ".config/zsh",
+    ".local/scripts",
+    ".local/share/applications",
+    ".gdbinit",
+    ".gitconfig",
+    ".xinitrc",
+    ".Xresources",
+    ".zshenv"
+  ],
+  "directories": [
+    ".config/ncmpcpp",
+    ".local/share/mpd",
+    ".local/share/mpd/playlists",
+    ".cache/zsh"
+  ],
+  "multi-configs": {
+    "polybar": ".config/polybar"
+  }
+}
