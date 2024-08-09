@@ -91,7 +91,7 @@ case $do_mirror in
 esac
 
 
-xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Speed" -0.8
+xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Speed" -0.7
 xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Profiles Available" flat
 xinput set-prop "Logitech M705" "libinput Accel Speed" -0.7
 xinput set-prop "Logitech M705" "libinput Accel Profiles Available" flat

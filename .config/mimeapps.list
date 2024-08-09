@@ -5,7 +5,7 @@ application/epub+zip=org.pwmt.zathura.desktop;
 
 [Default Applications]
 text/plain=nvim.desktop
-inode/directory=ranger.desktop
+inode/directory=pcmanfm.desktop
 text/html=firefox.desktop
 x-scheme-handler/http=firefox.desktop
 x-scheme-handler/https=firefox.desktop

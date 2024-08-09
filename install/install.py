@@ -113,7 +113,7 @@ def backupAndLinkFile(src : str, dest : str, do_backup : bool):
             createDirectory(backup_path.parent)
             backup_path.write_bytes(link_dest.read_bytes())
 
-    if link_dest.exists():
+    if link_dest.exists(follow_symlinks=False):
         if link_dest.is_dir() and not link_dest.is_symlink():
             shutil.rmtree(link_dest)
         else:
