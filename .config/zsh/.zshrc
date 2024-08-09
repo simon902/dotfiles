@@ -22,30 +22,33 @@ HISTFILE=~/.cache/zsh/history
 
 # man 1 zshoptions
 setopt SHARE_HISTORY # includes INC_APPEND_HISTORY, EXTENDED_HISTORY
+setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
-setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+# setopt HIST_IGNORE_ALL_DUPS
 
 # Autocomplete
 zmodload zsh/complist
 
-zstyle ':completion:*' menu select
+# use completion menu from fzf-tab
+zstyle ':completion:*' menu no
 # Auto complete with case insenstivity
-zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
 # for all completions: color
-#eval "$(dircolors)"
 export LS_COLORS="$(vivid generate molokai)" # https://github.com/sharkdp/vivid
-#. /usr/share/LS_COLORS/dircolors.sh
-zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 
 # Man Pages
 # FZF: F1/F2 to cycle through groups
 zstyle ':completion:*' group-name ''
-zstyle ':completion:*:descriptions' format '%d'
+zstyle ':completion:*:descriptions' format '[%d]'
 zstyle ':completion:*:manuals' separate-sections true
 zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:man.*' menu yes select
+
+# preview directory's content with eza when completing with cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 
 autoload -Uz compinit && compinit -d ~/.cache/zsh/.zcompdump 
@@ -100,7 +103,7 @@ source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
 source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
 # fzf keybindings (history search) + completions
 source <(fzf --zsh)
-eval "$(zoxide init zsh)"
+eval "$(zoxide init --cmd cd zsh)"
 source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

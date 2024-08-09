@@ -100,6 +100,7 @@
   //+---------------------------
   "liveServer.settings.donotShowInfoMsg": true,
   "verilog.linting.linter": "verilator",
+  "tabnine.experimentalAutoImports": true,
   "latex-workshop.latex.external.build.args": [
     "-shell-escape"
   ],
