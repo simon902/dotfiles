@@ -5,32 +5,32 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
+  "editor.wordWrap": "on",
+  "editor.minimap.enabled": false,
+  "diffEditor.ignoreTrimWhitespace": false,
   // "editor.formatOnSave": true,
   // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.untrustedFiles": "open",
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
+
+  //+---------------------------
+  //            Vim
+  //+---------------------------
   "vim.ignorecase": true,
   "vim.smartcase": false,
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
-  "liveServer.settings.donotShowInfoMsg": true,
-  "html.format.contentUnformatted": "",
-  "emmet.triggerExpansionOnTab": true,
-  "files.associations": {
-    "*html": "html",
-    "*.pl": "prolog"
-  },
-  "emmet.useInlineCompletions": true,
-  "haskell.manageHLS": "PATH",
-  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
-  "security.workspace.trust.untrustedFiles": "open",
-  "telemetry.telemetryLevel": "off",
-  "tabnine.experimentalAutoImports": true,
-  // Language Settings
+
+  //+---------------------------
+  //          Languages
+  //+---------------------------
   "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
-  "C_Cpp.errorSquiggles": "disabled",
-  "C_Cpp.intelliSenseEngineFallback": "disabled",
-  "C_Cpp.intelliSenseEngine": "disabled",
-  "C_Cpp.autocomplete": "disabled",
-  // "clangd.fallbackFlags": ["-std=c++17"],
+  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.intelliSenseEngineFallback": "Disabled",
+  "C_Cpp.intelliSenseEngine": "Disabled",
+  "C_Cpp.autocomplete": "Disabled",
   "clangd.arguments": [
     "--log=verbose",
     "--pretty",
@@ -44,6 +44,10 @@
     "-j=4"
     // "--function-arg-placeholders=false"
   ],
+
+  "haskell.manageHLS": "PATH",
+  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
+
   "[cpp]": {
     "editor.wordBasedSuggestions": "off",
     "editor.suggest.insertMode": "replace",
@@ -51,6 +55,8 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.defaultFormatter": "xaver.clang-format",
+    "editor.formatOnSave": true,
+    "clangd.fallbackFlags": ["-std=c++17"],
     "editor.rulers": [
       //{
       //"column": 80,    // spacing of 1st column from left
@@ -88,9 +94,11 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.minimap.enabled": false,
-  "editor.wordWrap": "on",
+  
+  //+---------------------------
+  //        Extensions
+  //+---------------------------
+  "liveServer.settings.donotShowInfoMsg": true,
   "verilog.linting.linter": "verilator",
   "latex-workshop.latex.external.build.args": [
     "-shell-escape"
