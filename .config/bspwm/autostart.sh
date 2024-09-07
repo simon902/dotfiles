@@ -20,19 +20,19 @@ function DuplicateScreen()
   echo "--- Duplicate Screen ---" ; echo ""
 
   monitor_primary=$(jq -r '.monitor_primary' $SCREEN_CONFIG)
-  monitor_sequence=$((< $SCREEN_CONFIG jq -r '.monitor_sequence | @sh') | tr -d \')
+  monitor_sequence=($(jq -r '.monitor_sequence.[]' $SCREEN_CONFIG))
 
-  for monitor in $monitor_sequence; do
+  for monitor in "${monitor_sequence[@]}"; do
     monitor_ratio=$(getScreenRatio $monitor)
 
-    if [[ $monitor = $monitor_primary ]]; then
+    if [[ "$monitor" = "$monitor_primary" ]]; then
       echo "Found primary monitor $monitor_primary with ratio $monitor_ratio"
-      xrandr --output $monitor_primary --primary --mode $monitor_ratio
-      bspc monitor $monitor -d I II III IV V VI VII VIII
+      xrandr --output "$monitor_primary" --primary --mode "$monitor_ratio"
+      bspc monitor "$monitor" -d I II III IV V VI VII VIII
     else
       echo "Found $monitor with ratio $monitor_ratio"
       #bspc monitor $monitor -d I II III IV V VI VII VIII
-      xrandr --output $monitor --mode $monitor_ratio --same-as $monitor_primary
+      xrandr --output "$monitor" --mode "$monitor_ratio" --same-as "$monitor_primary"
     fi
   done
   echo ""
@@ -44,28 +44,28 @@ function SplitScreen()
   echo "--- Split Screen ---"
   
   monitor_primary=$(jq -r '.monitor_primary' $SCREEN_CONFIG)
-  monitor_sequence=$((< $SCREEN_CONFIG jq -r '.monitor_sequence | @sh') | tr -d \')
+  monitor_sequence=($(jq -r '.monitor_sequence.[]' $SCREEN_CONFIG))
 
-  placing_left=True
+  placing_left=true
 
-  for monitor in $monitor_sequence; do
+  for monitor in "${monitor_sequence[@]}"; do
     
     echo "" ; echo "Settings for $monitor"
     monitor_ratio=$(getScreenRatio $monitor)
 
-    if [[ $monitor = $monitor_primary ]]; then
+    if [[ "$monitor" = "$monitor_primary" ]]; then
       echo "Found primary monitor $monitor_primary with ratio $monitor_ratio"
       placing_left=False
-      xrandr --output $monitor --primary --mode $monitor_ratio
-      bspc monitor $monitor -d I II III IV
-    elif [[ $placing_left = True ]]; then
+      xrandr --output "$monitor" --primary --mode "$monitor_ratio"
+      bspc monitor "$monitor" -d I II III IV
+    elif [[ "$placing_left" = true ]]; then
       echo "Placing $monitor left of primary $monitor_primary with ratio $monitor_ratio"
-      xrandr --output $monitor --mode $monitor_ratio --left-of $monitor_primary
-      bspc monitor $monitor -d V VI VII VIII 
+      xrandr --output "$monitor" --mode "$monitor_ratio" --left-of "$monitor_primary"
+      bspc monitor "$monitor" -d V VI VII VIII 
     else
       echo "Placing $monitor right of primary $monitor_primary with ratio $monitor_ratio"
-      xrandr --output $monitor --mode $monitor_ratio --right-of $monitor_primary
-      bspc monitor $monitor -d V VI VII VIII 
+      xrandr --output "$monitor" --mode "$monitor_ratio" --right-of "$monitor_primary"
+      bspc monitor "$monitor" -d V VI VII VIII 
     fi
   done
   echo ""
@@ -109,7 +109,7 @@ sxhkd &
 
 setxkbmap -layout de
 xsetroot -cursor_name left_ptr &
-numlockx on &
+# numlockx on &
 
 nitrogen --restore &
 run redshift-gtk
@@ -119,8 +119,6 @@ run nm-applet
 run volumeicon
 
 run dunst
-
-#xbacklight -set 40
 
 pgrep bspswallow || ~/.local/scripts/bspswallow &
 
