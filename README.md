@@ -31,6 +31,7 @@
 - **font**: RobotoMono Nerd Font
 - **xclip**: for systemwide-clipboard in neovim
 - **noto-fonts-emoji**: package
+- **gucharmap**: icon/glyph lookup
 
 ### Python
 
