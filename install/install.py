@@ -119,6 +119,7 @@ def backupAndLinkFile(src : str, dest : str, do_backup : bool):
         else:
             link_dest.unlink()
 
+    createDirectory(link_dest.parent)
     link_dest.symlink_to(link_src)
 
 

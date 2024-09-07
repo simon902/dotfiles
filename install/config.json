@@ -13,6 +13,7 @@
     ".config/VSCodium/User/keybindings.json",
     ".config/VSCodium/User/settings.json",
     ".config/zsh",
+    ".icons/default",
     ".local/scripts",
     ".local/share/applications",
     ".gdbinit",
