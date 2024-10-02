@@ -22,3 +22,5 @@ export VIDEO=mpv
 
 export JDK_HOME=/usr/lib/jvm/java-11-openjdk
 
+# To fix colored man pages
+export GROFF_NO_SGR=1
