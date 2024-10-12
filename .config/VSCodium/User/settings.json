@@ -45,6 +45,9 @@
     // "--function-arg-placeholders=false"
   ],
 
+  "python.languageServer": "Jedi",
+  "python.analysis.typeCheckingMode": "strict",
+
   "haskell.manageHLS": "PATH",
   "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
 
@@ -126,5 +129,6 @@
       ],
       "env": {}
     },
-  ]
+  ],
+  "python.defaultInterpreterPath": "/home/simon/repos/UNI/Master/Semester_2/vt2425g90/a1_eraser/.venv"
 }
