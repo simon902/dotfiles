@@ -100,7 +100,6 @@ xinput set-prop "Logitech M705" "libinput Accel Profiles Available" flat
 # reset top padding: needed if polybar margin-bottom is changed
 bspc config top_padding 0
 # bspc config ignore_ewmh_struts false
-$HOME/.config/polybar/launch.sh
 
 
 killall "sxhkd"
@@ -126,3 +125,5 @@ if ! pgrep lxpolkit; then
 	/usr/bin/lxpolkit &
 fi
 
+
+$HOME/.config/polybar/launch.sh
