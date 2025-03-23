@@ -107,7 +107,7 @@ super + w
 
 # File Manager
 super + e
-        pcmanfm
+        nemo
 
 super + r
 	alacritty -e ranger
