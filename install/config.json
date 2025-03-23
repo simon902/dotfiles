@@ -5,6 +5,7 @@
     ".config/mimeapps.list",
     ".config/mpd",
     ".config/mpv",
+    ".config/picom",
     ".config/ranger",
     ".config/redshift",
     ".config/rofi",
