@@ -136,7 +136,6 @@ while pgrep -u $UID -x picom >/dev/null; do sleep 1; done
 
 # Launch picom
 picom &
-$HOME/.config/polybar/launch.sh
 
 # Somehow after polybar top_padding is set to 34
 # If top_padding is not reset to 0, for not currently active workspaces the windows overlap the bar
