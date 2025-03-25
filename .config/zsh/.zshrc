@@ -68,7 +68,7 @@ function copyfile {
 
 # Aliases
 #
-source $HOME/repos/dotfiles/.config/zsh/aliases
+source "$HOME/.config/zsh/aliases"
 
 alias vim='nvim'
 alias rg='source ranger'
@@ -100,11 +100,11 @@ alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}
 ZVM_INIT_MODE=sourcing
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
 
-source $HOME/repos/dotfiles/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh
+source "$HOME/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh"
 # fzf keybindings (history search) + completions
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-source $HOME/repos/dotfiles/.config/zsh/scripts/colored-man-pages.zsh
+source "$HOME/.config/zsh/scripts/colored-man-pages.zsh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
