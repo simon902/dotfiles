@@ -1,6 +1,9 @@
 #!/bin/sh
 
 killall polybar
+
+while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+
 alias poly="polybar -c ~/.config/polybar/config.ini"
 
 primary_monitor=$(jq -r '.monitor_primary' $HOME/.config/bspwm/screen.json)
