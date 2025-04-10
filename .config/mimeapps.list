@@ -20,6 +20,6 @@ video/x-matroska=mpv.desktop
 video/mkv=mpv.desktop
 application/pdf=org.pwmt.zathura.desktop
 image/vnd.djvu=org.pwmt.zathura.desktop
-application/epub+zip=foliate.desktop
+application/epub+zip=com.github.johnfactotum.Foliate.desktop
 application/gzip=xarchiver.desktop
 application/zip=xarchiver.desktop
