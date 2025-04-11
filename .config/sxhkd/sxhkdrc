@@ -125,21 +125,18 @@ Print
     flameshot gui
 
 # screen brightness
-XF86MonBrightnessUp
-  changebrightness up
-
-XF86MonBrightnessDown
-  changebrightness down
+XF86MonBrightness{Up,Down}
+  changebrightness {up,down}
 
 # volume keys
-XF86AudioRaiseVolume
-	changevolume up
-
-XF86AudioLowerVolume
-	changevolume down
+XF86Audio{Raise,Lower}Volume
+	changevolume {up,down}
 
 XF86AudioMute
 	changevolume mute
+
+XF86Audio{Next,Prev,Play,Stop}
+	playerctl {next,previous,play,pause}
 
 # Misc
 super + shift + l
