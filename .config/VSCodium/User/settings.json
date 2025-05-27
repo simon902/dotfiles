@@ -14,7 +14,6 @@
   "security.workspace.trust.untrustedFiles": "open",
   "emmet.triggerExpansionOnTab": true,
   "emmet.useInlineCompletions": true,
-
   //+---------------------------
   //            Vim
   //+---------------------------
@@ -22,11 +21,11 @@
   "vim.smartcase": false,
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
-
   //+---------------------------
   //          Languages
   //+---------------------------
-  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/15.0.6/clangd_15.0.6/bin/clangd",
+  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/19.1.2/clangd_19.1.2/bin/clangd",
+  // "clangd.fallbackFlags": ["-std=c++17"],
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
   "C_Cpp.intelliSenseEngine": "Disabled",
@@ -44,13 +43,13 @@
     "-j=4"
     // "--function-arg-placeholders=false"
   ],
-
   "python.languageServer": "Jedi",
   "python.analysis.typeCheckingMode": "strict",
-
   "haskell.manageHLS": "PATH",
   "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
-
+  "[c]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
   "[cpp]": {
     "editor.wordBasedSuggestions": "off",
     "editor.suggest.insertMode": "replace",
@@ -58,8 +57,7 @@
     "editor.insertSpaces": true,
     "editor.tabSize": 2,
     "editor.defaultFormatter": "xaver.clang-format",
-    "editor.formatOnSave": true,
-    "clangd.fallbackFlags": ["-std=c++17"],
+    // "editor.formatOnSave": true,
     "editor.rulers": [
       //{
       //"column": 80,    // spacing of 1st column from left
@@ -87,7 +85,8 @@
     ]
   },
   "[latex]": {
-    "editor.wordWrap": "on"
+    "editor.wordWrap": "on",
+    "editor.formatOnSave": true,
   },
   "[shellscript]": {
     "editor.wordWrap": "on"
@@ -97,13 +96,14 @@
     "**/.metals": true,
     "**/.ammonite": true
   },
-  
   //+---------------------------
   //        Extensions
   //+---------------------------
   "liveServer.settings.donotShowInfoMsg": true,
   "verilog.linting.linter": "verilator",
   "tabnine.experimentalAutoImports": true,
+
+  "latex-workshop.formatting.latex": "tex-fmt",
   "latex-workshop.latex.external.build.args": [
     "-shell-escape"
   ],
@@ -113,6 +113,17 @@
     "-file-line-error",
     "-shell-escape",
     "%DOC%"
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "pdflatex, makeglossaries, pdflatex (2x)",
+      "tools": [
+        "pdflatex",
+        "makeglossaries",
+        "biber",
+        "pdflatex"
+      ]
+    },
   ],
   "latex-workshop.latex.tools": [
     {
@@ -128,6 +139,30 @@
         "%DOC%"
       ],
       "env": {}
+    },
+    {
+      "name": "pdflatex",
+      "command": "pdflatex",
+      "args": [
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    },
+    {
+      "name": "makeglossaries",
+      "command": "makeglossaries",
+      "args": [
+        "%DOCFILE%"
+      ]
+    },
+    {
+      "name": "biber",
+      "command": "biber",
+      "args": [
+        "%DOC%"
+      ]
     },
   ],
 }
