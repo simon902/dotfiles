@@ -102,7 +102,6 @@
   "liveServer.settings.donotShowInfoMsg": true,
   "verilog.linting.linter": "verilator",
   "tabnine.experimentalAutoImports": true,
-
   "latex-workshop.formatting.latex": "tex-fmt",
   "latex-workshop.latex.external.build.args": [
     "-shell-escape"
@@ -115,6 +114,12 @@
     "%DOC%"
   ],
   "latex-workshop.latex.recipes": [
+    {
+      "name": "latexmk",
+      "tools": [
+        "latexmk",
+      ]
+    },
     {
       "name": "pdflatex, makeglossaries, pdflatex (2x)",
       "tools": [
