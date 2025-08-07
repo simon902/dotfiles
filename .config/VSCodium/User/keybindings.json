@@ -51,4 +51,9 @@
     "key": "ctrl+i",
     "command": "workbench.action.navigateForward"
   },
+  {
+    "key": "ctrl+d",
+    "command": "-extension.vim_ctrl+d",
+    "when": "editorTextFocus && vim.active && vim.use<C-d> && !inDebugRepl"
+  },
 ]
