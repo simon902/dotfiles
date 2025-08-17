@@ -5,7 +5,6 @@
 #  /___|___/_| |_|
 #
 
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
@@ -52,6 +51,7 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 
 autoload -Uz compinit && compinit -d ~/.cache/zsh/.zcompdump 
+setopt EXTENDED_GLOB
 _comp_options+=(globdots)		# Include hidden files.
 
 
@@ -71,18 +71,17 @@ function copyfile {
 source "$HOME/.config/zsh/aliases"
 
 alias vim='nvim'
-alias rg='source ranger'
+# alias rg='source ranger'
 
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 
 # 'Exa': Replacement for 'ls'
-alias ls='eza -al --color=always --group-directories-first --icons'
-alias la='eza -a --color=always --group-directories-first'
-alias ll='eza -l --color=always --group-directories-first --icons'
-alias lt='eza -aT --color=always --group-directories-first'
-alias l.='eza -a | grep "^\."'
+alias ls='eza -al --color=always --group-directories-first --icons=auto'
+alias ll='eza -l --color=always --group-directories-first --icons=auto'
+alias lt='eza -T --color=always --group-directories-first --icons=auto'
+alias l.='eza -l --color=always --group-directories-first --icons=auto -d .?*'
 
 # Pacman
 alias pkglist='pacman -Qqen'
@@ -94,6 +93,11 @@ alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p h
 alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --print0 | xargs -0 -o nvim'
 
 
+# Load all custom function files // Directories are ignored
+for file in "${ZDOTDIR:-$HOME/.config/zsh}/functions/"*.zsh; do
+    [ -r "$file" ] && source "$file"
+done
+
 
 # Plugins
 #
@@ -104,9 +108,9 @@ source "$HOME/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh"
 # fzf keybindings (history search) + completions
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
-source "$HOME/.config/zsh/scripts/colored-man-pages.zsh"
 
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
 
 

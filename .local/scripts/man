@@ -1,8 +1,11 @@
+#!/usr/bin/env zsh
+
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colored-man-pages
 
 
 # Requires colors autoload.
 # See termcap(5).
+autoload -U colors && colors
 
 # Set up once, and then reuse. This way it supports user overrides after the
 # plugin is loaded.
@@ -48,9 +51,4 @@ function colored() {
   command env $environment "$@"
 }
 
-# Colorize man and dman/debman (from debian-goodies)
-function man \
-  dman \
-  debman {
-  colored $0 "$@"
-}
+colored "/usr/bin/man" "$@"
