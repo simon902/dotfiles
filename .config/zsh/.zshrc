@@ -59,10 +59,24 @@ _comp_options+=(globdots)		# Include hidden files.
 preexec() { echo -ne '\e[5 q' ;} 
 
 
-# Copies the contents of a given file to the system or X Windows clipboard
-function copyfile {
-  emulate -L zsh
-  xclip -in -selection clipboard < "${1:-/dev/stdin}"
+# Copies the contents of a given file to the clipboard
+function copyfile() {
+  local red='\e[1;31m' reset='\e[0m'
+  local file="$1"
+
+  if [ ! -f "$file" ]; then
+    echo "File ${red}not${reset} found: $file" >&2
+    return 1
+  fi
+
+  if [ -n "$WAYLAND_DISPLAY" ] && command -v wl-copy >/dev/null; then
+    wl-copy < "$file"
+  elif [ -n "$DISPLAY" ] && command -v xclip >/dev/null; then
+    xclip -in -selection clipboard < "$file"
+  else
+    echo "${red}No${reset} supported clipboard tool found." >&2
+    return 1
+  fi
 }
 
 
@@ -112,8 +126,6 @@ eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
-
-
 
 # Starship Prompt
 case $(tty) in
