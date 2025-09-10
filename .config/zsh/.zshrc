@@ -50,7 +50,8 @@ zstyle ':completion:*:man.*' menu yes select
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 
 
-autoload -Uz compinit && compinit -d ~/.cache/zsh/.zcompdump 
+autoload -Uz compinit
+compinit -d ~/.cache/zsh/.zcompdump 
 setopt EXTENDED_GLOB
 _comp_options+=(globdots)		# Include hidden files.
 
