@@ -91,6 +91,9 @@ case $do_mirror in
 esac
 
 
+# system-wide preferred theme
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Speed" -0.7
 xinput set-prop "ROCCAT ROCCAT Kone Aimo Mouse" "libinput Accel Profiles Available" flat
 xinput set-prop "Logitech M705" "libinput Accel Speed" -0.7
