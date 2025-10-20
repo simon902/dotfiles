@@ -127,7 +127,6 @@ if ! pgrep lxpolkit; then
 fi
 
 
-$HOME/.config/polybar/launch.sh
 
 killall -q picom
 

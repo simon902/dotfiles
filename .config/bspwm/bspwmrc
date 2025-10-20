@@ -76,3 +76,5 @@ bspc rule -a Spotify desktop='^8' follow=on
 # Remove desktop "Desktop" that gets created when mirror screen is activated 
 # Why ??
 bspc query -D --names | grep Desktop && bspc desktop Desktop -r
+
+$HOME/.config/polybar/launch.sh
