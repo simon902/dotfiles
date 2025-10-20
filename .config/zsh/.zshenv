@@ -2,6 +2,7 @@ path=($HOME"/.local/bin" $path)
 path=($HOME"/.local/scripts" $path)
 path+=($HOME"/.cabal/bin")
 path+=($HOME"/.ghcup/bin")
+path+=($HOME"/.cargo/bin")
 export PATH
 #export PATH="/usr/lib/ccache/bin/:$PATH"
 
