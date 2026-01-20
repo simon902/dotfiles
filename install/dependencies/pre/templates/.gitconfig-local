@@ -1,0 +1,2 @@
+[includeIf "hasconfig:remote.*.url:git@git.changeme.com:*/**"]
+	path = ~/.gitconfig-work

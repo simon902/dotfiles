@@ -1,6 +1,7 @@
 [user]
 	name = Simon Scherer
-	email = simon.scherer@student.tugraz.at
+	email = git69566@pinebound.com
+
 [color "status"]
 	branch = 14 normal
 	added = 10 normal
@@ -12,6 +13,7 @@
 	nobranch = 1 normal italic
 	unmerged = 9 normal
 	untracked = normal dim
+
 [core]
 	pager = less -LRs --mouse
 
@@ -41,3 +43,6 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[include]
+	path = ~/.gitconfig-local

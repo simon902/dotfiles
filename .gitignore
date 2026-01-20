@@ -1,9 +1,15 @@
 aliases
 .backup
-.config/bspwm/screen.json
-.local/scripts/xterm
+
 
 # zsh plugins
 fzf-tab
 z.lua
 zsh-fzf-history-search
+
+
+# Created by pre/post dependencies
+.config/bspwm/screen.json
+.local/scripts/xterm
+/.gitconfig-local
+/.gitconfig-work

@@ -21,6 +21,8 @@
     ".local/share/applications",
     ".gdbinit",
     ".gitconfig",
+    ".gitconfig-local",
+    ".gitconfig-work",
     ".gtkrc-2.0",
     ".xinitrc",
     ".Xresources",
