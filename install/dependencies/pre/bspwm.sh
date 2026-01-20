@@ -1,11 +1,13 @@
 #!/bin/bash
 
 CONFIG_ROOT=$1
+TEMPLATE_PATH=$2
+SCREEN_CONF_DIR="$CONFIG_ROOT/.config/bspwm/screen.json"
 
-if [[ ! -f "$CONFIG_ROOT/.config/bspwm/screen.json" ]]; then
+if [[ ! -f "$SCREEN_CONF_DIR" ]]; then
   echo "SCREEN TEMPLATE"
-  SCREEN_CONF_DIR="$CONFIG_ROOT/.config/bspwm/screen.json"
-  cp "$CONFIG_ROOT/.config/bspwm/template/screen.json" $SCREEN_CONF_DIR
+
+  cp "$TEMPLATE_PATH/screen.json" $SCREEN_CONF_DIR
 
   monitor_sequence=$(xrandr -q | awk '$2 == "connected" {print "\""$1}' ORS='", ')
 

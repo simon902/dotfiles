@@ -78,18 +78,22 @@ def checkForBackup(config):
     return False
 
 
-def runExecutable(exe : str, root_path=True, *args):
-    first_args = [exe]
-    if root_path:
-        first_args.append(CONFIG_ROOT_PATH)
-    subprocess.run(first_args + list(args), stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+def runExecutable(exe, *args):
+    command = [exe] + list(args)
+
+    subprocess.run(command, stderr=subprocess.DEVNULL)
 
 
 def handleDependencies(dependency_type : DependencyType):
     dependency_path = CONFIG_ROOT_PATH / "install" / "dependencies" / dependency_type.value
 
+    template_path = dependency_path / "templates"
+
     for dependency in dependency_path.iterdir():
-        runExecutable(dependency)
+        if dependency.is_dir():
+            continue
+
+        runExecutable(dependency, CONFIG_ROOT_PATH, template_path)
 
 
 def createDirectory(path : Path):
