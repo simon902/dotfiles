@@ -103,7 +103,7 @@ super + Return
 
 # Firefox
 super + w
-        firefox
+        zen-browser
 
 # File Manager
 super + e
