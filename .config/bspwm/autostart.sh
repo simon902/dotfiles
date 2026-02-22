@@ -119,7 +119,6 @@ run redshift-gtk
 run flameshot
 run nm-applet
 
-run volumeicon
 
 run dunst
 
