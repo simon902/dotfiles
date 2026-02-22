@@ -25,3 +25,6 @@ export JDK_HOME=/usr/lib/jvm/java-11-openjdk
 export GROFF_NO_SGR=1
 
 export PYTHON_HISTORY="$HOME/.local/state/python_history"
+
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
