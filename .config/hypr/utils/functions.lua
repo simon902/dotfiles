@@ -2,10 +2,11 @@ local function wsaction(action, range, i)
     return function()
         local activews = hl.get_active_workspace()
         if activews then
-            local id = activews.id
-            local s  = (i - 1) * 10 + (id % 10)
-            local t  = math.floor((id - 1) / 10) * 10 + i
-            local z  = (range == "group") and s or t
+            local id       = activews.id
+            local position = ((id - 1) % 10) + 1
+            local s        = (i - 1) * 10 + position
+            local t        = math.floor((id - 1) / 10) * 10 + i
+            local z        = (range == "group") and s or t
 
             if action == "move" then
                 return hl.dispatch(hl.dsp.window.move({ workspace = z }))
