@@ -96,6 +96,7 @@ alias fgrep='fgrep --color=auto'
 alias ls='eza -al --color=always --group-directories-first --icons=auto'
 alias ll='eza -l --color=always --group-directories-first --icons=auto'
 alias lt='eza -T --color=always --group-directories-first --icons=auto'
+alias ld='eza -lD --color=always --group-directories-first --icons=auto'
 alias l.='eza -l --color=always --group-directories-first --icons=auto -d .?*'
 
 # Pacman
@@ -105,7 +106,6 @@ alias aurlist='pacman -Qqem'
 # Misc
 alias memdir='du . -hd 1 | sort -hr'
 alias mirrors='sudo reflector --verbose -c AT -c DE -c CH -c IT -c FR -a 12 -p https --sort rate -n 10 --save /etc/pacman.d/mirrorlist'
-alias fp='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}" --print0 | xargs -0 -o nvim'
 alias lg='lazygit'
 
 
@@ -137,6 +137,9 @@ eval "$(zoxide init --cmd cd zsh)"
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
+
+# Suggest the package that provides an unknown command (pkgfile)
+source /usr/share/doc/pkgfile/command-not-found.zsh 2>/dev/null
 
 # Starship Prompt
 case $(tty) in
