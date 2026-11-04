@@ -24,7 +24,6 @@
   //+---------------------------
   //          Languages
   //+---------------------------
-  "clangd.path": "/home/simon/.config/VSCodium/User/globalStorage/llvm-vs-code-extensions.vscode-clangd/install/19.1.2/clangd_19.1.2/bin/clangd",
   // "clangd.fallbackFlags": ["-std=c++17"],
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
