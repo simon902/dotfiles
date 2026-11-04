@@ -7,13 +7,63 @@
 
 local vars = require("variables")
 
+-- Per machine monitor setup in hosts/<hostname>.lua
+-- Machines without a file keep the default rule from hyprland.lua (preferred, auto, scale 1)
+local function read_hostname()
+    local f = io.open("/proc/sys/kernel/hostname")
+    if not f then return "unknown" end
+    local hostname = f:read("l")
+    f:close()
+    return hostname
+end
+
+local function load_host(hostname)
+    local file = io.open(os.getenv("HOME") .. "/.config/hypr/hosts/" .. hostname .. ".lua")
+    if not file then return {} end
+    file:close()
+    return require("hosts." .. hostname)
+end
+
+local hostname = read_hostname()
+local host = load_host(hostname)
+
+-- One monitor or a priority list, the first connected one is the main monitor
+local primary_monitors = host.primaryMonitor or {}
+if type(primary_monitors) == "string" then
+    primary_monitors = { primary_monitors }
+end
+
+if #primary_monitors == 0 then
+    pcall(hl.notification.create, {
+        text    = "No primaryMonitor set in ~/.config/hypr/hosts/" .. hostname .. ".lua, using the first monitor",
+        timeout = 10000,
+        icon    = 3, -- error
+    })
+end
+
+for _, monitor in ipairs(host.monitors or {}) do
+    hl.monitor(monitor)
+end
+
+-- Monitor selector: either a name (eDP-1) or "desc:" followed by the start of its description
+local function matches(mon, selector)
+    if selector:sub(1, 5) == "desc:" then
+        local desc = selector:sub(6)
+        return mon.description:sub(1, #desc) == desc
+    end
+    return mon.name == selector
+end
+
 local function pick_primary_secondary(monitors)
     local primary
-    for _, mon in ipairs(monitors) do
-        if mon.name == vars.primaryMonitorName then
-            primary = mon
-            break
+    for _, selector in ipairs(primary_monitors) do
+        for _, mon in ipairs(monitors) do
+            if matches(mon, selector) then
+                primary = mon
+                break
+            end
         end
+        if primary then break end
     end
     primary = primary or monitors[1]
 

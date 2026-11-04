@@ -56,7 +56,6 @@ return {
     sleepGestureCmd            = "systemctl suspend-then-hibernate",
 
     -- Monitors
-    primaryMonitorName         = "eDP-1", -- Laptop panel; used as the anchor when multiple monitors are present
     maxWorkspace               = 200,     -- 20 decades of workspace-group paging; comfortably more than anyone uses
 
     ------------------
