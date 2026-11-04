@@ -3,6 +3,7 @@ adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
 aarch64-linux-gnu-gcc
 aarch64-linux-gnu-gdb
+adw-gtk-theme
 alacritty
 alsa-utils
 amd-ucode
@@ -18,6 +19,7 @@ bash-completion
 bat
 bat-extras
 bear
+bibata-cursor-theme
 biber
 bind
 binutils
@@ -31,6 +33,7 @@ boost
 brasero
 bspwm
 calcurse
+cantarell-fonts
 chromium
 cmake
 cups
@@ -128,6 +131,7 @@ networkmanager-openconnect
 networkmanager-openvpn
 nitrogen
 nmap
+nordic-darker-theme
 noto-fonts
 nodejs
 noto-fonts-emoji
@@ -142,6 +146,7 @@ openssh
 pacman
 pacman-contrib
 pandoc-cli
+papirus-icon-theme
 patch
 pavucontrol
 pcmanfm
