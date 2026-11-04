@@ -18,6 +18,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-theme " .. vars.cursorTheme)
     hl.exec_cmd("gsettings set org.gnome.desktop.interface cursor-size " .. vars.cursorSize)
 
+    -- GTK font
+    hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name '" .. vars.gtkFont .. "'")
+
     -- Location provider and night light
     hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
     hl.exec_cmd("sleep 1 && gammastep")

@@ -50,8 +50,9 @@ return {
     -- Misc
     volumeStep                 = 10,
     volumeMax                  = 100,
-    cursorTheme                = "sweet-cursors",
+    cursorTheme                = "Bibata-Modern-Ice",
     cursorSize                 = 24,
+    gtkFont                    = "Cantarell 11",
     sleepGestureCmd            = "systemctl suspend-then-hibernate",
 
     -- Monitors
@@ -137,7 +138,7 @@ return {
     kbVolumeMute               = "SUPER + SHIFT + M",
 
     -- Misc
-    kbLauncher                 = "SUPER + SUPER_L",
+    kbLauncher                 = "SUPER + SHIFT + Return",
     kbSession                  = "CTRL + ALT + Delete",
     kbShowSidebar              = "SUPER + N",
     kbClearNotifs              = "CTRL + ALT + C",

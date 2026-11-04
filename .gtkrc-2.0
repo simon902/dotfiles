@@ -1,6 +1,6 @@
 gtk-theme-name="Nordic-darker"
 gtk-icon-theme-name="Papirus-Dark"
-gtk-font-name="RobotoMono Nerd Font 11"
+gtk-font-name="Cantarell 11"
 gtk-cursor-theme-name="Bibata-Modern-Ice"
 gtk-application-prefer-dark-theme = true
 gtk-xft-antialias=1
