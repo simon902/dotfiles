@@ -1,19 +1,23 @@
 {
+  //+---------------------------
+  //         Appearance
+  //+---------------------------
   "workbench.colorTheme": "Catppuccin Frappé",
   "editor.fontFamily": "'RobotoMono Nerd Font', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "editor.renderWhitespace": "all",
-  "editor.tabSize": 2,
-  "editor.insertSpaces": true,
   "editor.lineNumbers": "relative",
-  "editor.wordWrap": "on",
+  "editor.renderWhitespace": "all",
   "editor.minimap.enabled": false,
+  //+---------------------------
+  //           Editor
+  //+---------------------------
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
   "diffEditor.ignoreTrimWhitespace": false,
-  // "editor.formatOnSave": true,
-  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  //+---------------------------
+  //     Privacy & Security
+  //+---------------------------
   "telemetry.telemetryLevel": "off",
   "security.workspace.trust.untrustedFiles": "open",
-  "emmet.triggerExpansionOnTab": true,
-  "emmet.useInlineCompletions": true,
   //+---------------------------
   //            Vim
   //+---------------------------
@@ -22,13 +26,14 @@
   "vim.hlsearch": true,
   "vim.useSystemClipboard": true,
   //+---------------------------
-  //          Languages
+  //           C / C++
   //+---------------------------
-  // "clangd.fallbackFlags": ["-std=c++17"],
+  // Disable Microsoft C/C++ IntelliSense, clangd is used instead
   "C_Cpp.errorSquiggles": "Disabled",
   "C_Cpp.intelliSenseEngineFallback": "Disabled",
   "C_Cpp.intelliSenseEngine": "Disabled",
   "C_Cpp.autocomplete": "Disabled",
+  // "clangd.fallbackFlags": ["-std=c++17"],
   "clangd.arguments": [
     "--log=verbose",
     "--pretty",
@@ -38,69 +43,37 @@
     "--header-insertion-decorators",
     "--background-index",
     "--clang-tidy",
-    "--clang-tidy-checks=cppcoreguidelines-*,performance-*,bugprone-*,portability-*,modernize-*,google-*",
     "-j=4"
-    // "--function-arg-placeholders=false"
   ],
-  "python.languageServer": "Jedi",
-  "python.analysis.typeCheckingMode": "strict",
-  "haskell.manageHLS": "PATH",
-  "haskell.serverExecutablePath": "~/.ghcup/bin/haskell-language-server-9.4.7",
-  "[c]": {
-    "editor.defaultFormatter": "xaver.clang-format"
-  },
-  "[cpp]": {
+  "[c][cpp]": {
     "editor.wordBasedSuggestions": "off",
     "editor.suggest.insertMode": "replace",
     "editor.semanticHighlighting.enabled": true,
-    "editor.insertSpaces": true,
-    "editor.tabSize": 2,
     "editor.defaultFormatter": "xaver.clang-format",
-    // "editor.formatOnSave": true,
     "editor.rulers": [
-      //{
-      //"column": 80,    // spacing of 1st column from left
-      //"color": "#9f0af5"   // purple, go Pirates!
-      //},
-      100, // 2nd ruler with no color option
-      {
-        "column": 120, // third ruler
-        "color": "#ff9900" // orange, Go Vols!
-      }
+      100,
+      { "column": 120, "color": "#ff9900" }
     ]
   },
+  //+---------------------------
+  //           Python
+  //+---------------------------
+  // basedpyright provides the language server, Pylance only runs in Microsoft's VS Code
+  "python.languageServer": "None",
+  "basedpyright.analysis.typeCheckingMode": "strict",
   "[python]": {
     "editor.tabSize": 4,
     "editor.rulers": [
-      //{
-      //"column": 80,    // spacing of 1st column from left
-      //"color": "#ff9900"   // orange, Go Vols!
-      //},
-      100, // 2nd ruler with no color option
-      {
-        "column": 120, // third ruler
-        "color": "#9f0af5" // purple, go Pirates!
-      }
+      100,
+      { "column": 120, "color": "#9f0af5" }
     ]
   },
+  //+---------------------------
+  //           LaTeX
+  //+---------------------------
   "[latex]": {
-    "editor.wordWrap": "on",
-    "editor.formatOnSave": true,
+    "editor.formatOnSave": true
   },
-  "[shellscript]": {
-    "editor.wordWrap": "on"
-  },
-  "files.watcherExclude": {
-    "**/.bloop": true,
-    "**/.metals": true,
-    "**/.ammonite": true
-  },
-  //+---------------------------
-  //        Extensions
-  //+---------------------------
-  "liveServer.settings.donotShowInfoMsg": true,
-  "verilog.linting.linter": "verilator",
-  "tabnine.experimentalAutoImports": true,
   "latex-workshop.formatting.latex": "tex-fmt",
   "latex-workshop.latex.external.build.args": [
     "-shell-escape"
@@ -115,19 +88,12 @@
   "latex-workshop.latex.recipes": [
     {
       "name": "latexmk",
-      "tools": [
-        "latexmk",
-      ]
+      "tools": ["latexmk"]
     },
     {
-      "name": "pdflatex, makeglossaries, pdflatex (2x)",
-      "tools": [
-        "pdflatex",
-        "makeglossaries",
-        "biber",
-        "pdflatex"
-      ]
-    },
+      "name": "pdflatex ➞ makeglossaries ➞ biber ➞ pdflatex",
+      "tools": ["pdflatex", "makeglossaries", "biber", "pdflatex"]
+    }
   ],
   "latex-workshop.latex.tools": [
     {
@@ -141,8 +107,7 @@
         "-pdf",
         "-outdir=%OUTDIR%",
         "%DOC%"
-      ],
-      "env": {}
+      ]
     },
     {
       "name": "pdflatex",
@@ -157,17 +122,22 @@
     {
       "name": "makeglossaries",
       "command": "makeglossaries",
-      "args": [
-        "%DOCFILE%"
-      ]
+      "args": ["%DOCFILE%"]
     },
     {
       "name": "biber",
       "command": "biber",
-      "args": [
-        "%DOC%"
-      ]
-    },
+      "args": ["%DOC%"]
+    }
   ],
-  "claudeCode.hideOnboarding": true,
+  //+---------------------------
+  //            Web
+  //+---------------------------
+  "emmet.triggerExpansionOnTab": true,
+  "emmet.useInlineCompletions": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  //+---------------------------
+  //        Claude Code
+  //+---------------------------
+  "claudeCode.hideOnboarding": true
 }
