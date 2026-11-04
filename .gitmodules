@@ -1,0 +1,4 @@
+[submodule ".config/quickshell/caelestia"]
+	path = .config/quickshell/caelestia
+	url = git@github.com:simon902/caelestia-shell.git
+	branch = custom

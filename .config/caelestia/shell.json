@@ -1,0 +1,6 @@
+{
+    "services": {
+        "clockFormat": "TwentyFourHour",
+        "weatherUnits": "Celsius"
+    }
+}
