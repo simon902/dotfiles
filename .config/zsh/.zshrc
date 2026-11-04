@@ -120,6 +120,15 @@ done
 ZVM_INIT_MODE=sourcing
 source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
 
+# Keybindings, after zsh-vi-mode as it resets them
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[5C" forward-word
+bindkey "^[[5D" backward-word
+bindkey "^[OC" forward-word
+bindkey "^[OD" backward-word
+bindkey "^[[3~" delete-char
+
 source "$HOME/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh"
 # fzf keybindings (history search) + completions
 source <(fzf --zsh)
