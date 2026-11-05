@@ -164,9 +164,8 @@ create_bind(vars.kbFileExplorer, hl.dsp.exec_cmd(vars.fileExplorer))
 create_bind(vars.kbAudioSettings, hl.dsp.exec_cmd(vars.audioSettings))
 
 -- Utilities
-create_bind(vars.kbScreenshot, hl.dsp.exec_cmd("caelestia screenshot"), locked)
-create_bind(vars.kbScreenshotFreeze, hl.dsp.global("caelestia:screenshotFreeze"))
-create_bind(vars.kbScreenshotRegion, hl.dsp.global("caelestia:screenshot"))
+-- create_bind(vars.kbScreenshot, hl.dsp.global("caelestia:screenshot"))
+create_bind(vars.kbScreenshot, hl.dsp.exec_cmd("flameshot gui"))
 create_bind(vars.kbRecord, hl.dsp.exec_cmd("caelestia record"))
 create_bind(vars.kbRecordSound, hl.dsp.exec_cmd("caelestia record -s"))
 create_bind(vars.kbRecordRegion, hl.dsp.exec_cmd("caelestia record -r"))

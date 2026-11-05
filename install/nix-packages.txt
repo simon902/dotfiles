@@ -18,6 +18,7 @@ nixpkgs#fzf
 
 # Apps
 nixpkgs#pwvucontrol
+nixpkgs#flameshot
 
 # Fonts and cursor
 nixpkgs#nerd-fonts.roboto-mono

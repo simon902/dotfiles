@@ -8,5 +8,12 @@
 # Setting XCURSOR_PATH replaces the default dirs, so list them again next to Nix's
 export XCURSOR_PATH="$HOME/.icons:$HOME/.local/share/icons:$HOME/.nix-profile/share/icons:/usr/share/icons:/usr/share/pixmaps"
 
+# Let the distro's xdg-desktop-portal find Nix's Hyprland portal (dir set up by nixPortals.sh)
+if [ -d "$HOME/.local/share/xdg-desktop-portal/portals" ]; then
+    export XDG_DESKTOP_PORTAL_DIR="$HOME/.local/share/xdg-desktop-portal/portals"
+    systemctl --user import-environment XDG_DESKTOP_PORTAL_DIR
+    dbus-update-activation-environment XDG_DESKTOP_PORTAL_DIR 2>/dev/null
+fi
+
 # nixGL lets Nix's Hyprland use the system's GPU drivers
 exec start-hyprland --force-nixgl
