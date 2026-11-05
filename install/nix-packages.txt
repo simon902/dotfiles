@@ -1,0 +1,25 @@
+# Installed with `nix profile` on non-Arch hosts by install/dependencies/post/nixPackages.py.
+# One flake installable per line, no trailing comments.
+# The caelestia shell fork is installed by install/dependencies/post/caelestiaShell.sh.
+
+# Hyprland
+nixpkgs#hyprland
+nixpkgs#hyprpicker
+nixpkgs#xdg-desktop-portal-hyprland
+github:nix-community/nixGL
+
+# Caelestia
+nixpkgs#quickshell
+github:caelestia-dots/cli
+
+# Shell
+nixpkgs#starship
+nixpkgs#fzf
+
+# Apps
+nixpkgs#pwvucontrol
+
+# Fonts and cursor
+nixpkgs#nerd-fonts.roboto-mono
+nixpkgs#nerd-fonts.jetbrains-mono
+nixpkgs#bibata-cursors

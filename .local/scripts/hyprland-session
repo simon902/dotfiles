@@ -1,0 +1,12 @@
+#!/bin/sh
+# Started by /usr/share/wayland-sessions/hyprland-nix.desktop.
+# Display managers don't load the Nix environment, so set it up first.
+
+[ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ] &&
+    . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
+# Setting XCURSOR_PATH replaces the default dirs, so list them again next to Nix's
+export XCURSOR_PATH="$HOME/.icons:$HOME/.local/share/icons:$HOME/.nix-profile/share/icons:/usr/share/icons:/usr/share/pixmaps"
+
+# nixGL lets Nix's Hyprland use the system's GPU drivers
+exec start-hyprland --force-nixgl
