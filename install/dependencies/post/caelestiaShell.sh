@@ -5,6 +5,8 @@ SHELL_DIR="$CONFIG_ROOT/.config/quickshell/caelestia"
 
 git -C "$CONFIG_ROOT" submodule update --init .config/quickshell/caelestia
 git -C "$SHELL_DIR" remote add upstream https://github.com/caelestia-dots/shell.git 2>/dev/null
+# The fork has no tags of its own, but CMake takes VERSION from `git describe --tags`
+git -C "$SHELL_DIR" fetch -q --tags upstream
 
 cd "$SHELL_DIR"
 
