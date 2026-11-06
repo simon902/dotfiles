@@ -1,0 +1,35 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+    echo "Usage: $0 <video-url>"
+    exit 1
+fi
+
+URL="$1"
+# Create a temporary directory
+TMP_DIR=$(mktemp -d)
+OUTPUT_FILE="whatsapp_video_$(date +%s).mp4"
+
+echo "▶ Downloading video with yt-dlp..."
+yt-dlp -P "$TMP_DIR" -o "raw_video.%(ext)s" "$URL"
+
+# Find the exact downloaded file
+INPUT_FILE=$(find "$TMP_DIR" -type f -name "raw_video.*" | head -n 1)
+
+if [ -z "$INPUT_FILE" ]; then
+    echo "Error: Download failed."
+    rm -rf "$TMP_DIR"
+    exit 1
+fi
+
+echo "▶ Converting for WhatsApp..."
+ffmpeg -i "$INPUT_FILE" \
+    -c:v libx264 -profile:v main -level 4.0 -pix_fmt yuv420p -crf 26 \
+    -c:a aac -b:a 128k \
+    -movflags +faststart \
+    -y "$OUTPUT_FILE"
+
+echo "▶ Cleaning up..."
+rm -rf "$TMP_DIR"
+
+echo "Done! Video saved as: $OUTPUT_FILE"
