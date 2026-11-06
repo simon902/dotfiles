@@ -8,4 +8,4 @@ rm -rf yay/
 
 sudo pacman -S --needed $(comm -12 <(pacman -Slq | sort) <(sort pkglist.txt))
 
-yay -S xclicker vimix-icon-theme ccat vscodium-bin ttf-material-design-icons ttf-rubik-vf nordic-darker-theme bibata-cursor-theme paper-icon-theme lscolors-git
+yay -S xclicker vimix-icon-theme ccat vscodium-bin ttf-material-design-icons ttf-rubik-vf nitch-git nordic-darker-theme bibata-cursor-theme paper-icon-theme lscolors-git
