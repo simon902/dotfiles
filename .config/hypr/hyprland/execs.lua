@@ -18,11 +18,6 @@ local polkit_agent = first_existing({
     "/usr/libexec/polkit-gnome-authentication-agent-1",
 })
 
-local geoclue_agent = first_existing({
-    "/usr/lib/geoclue-2.0/demos/agent",
-    "/usr/libexec/geoclue-2.0/demos/agent",
-})
-
 hl.on("hyprland.start", function()
     -- Keyring and auth
     hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
@@ -45,9 +40,8 @@ hl.on("hyprland.start", function()
     -- GTK font
     hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name '" .. vars.gtkFont .. "'")
 
-    -- Location provider and night light
-    if geoclue_agent then hl.exec_cmd(geoclue_agent) end
-    hl.exec_cmd("sleep 1 && gammastep")
+    -- Night light
+    hl.exec_cmd("hyprsunset")
 
     -- Forward bluetooth media commands to MPRIS
     hl.exec_cmd("mpris-proxy")
