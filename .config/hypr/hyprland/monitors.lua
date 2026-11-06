@@ -2,8 +2,13 @@
 --
 -- Single monitor: 1-10
 -- Double monitor:
---    Main:   6-10
---    Second: 1-5
+--    Main:   1-5
+--    Second: 6-10
+--
+-- Per-host monitor setup in hosts/<hostname>.lua:
+--    primaryMonitor:   main monitor
+--    secondaryMonitor: never main monitor
+-- Both take a monitor selector or a priority list of them
 
 local vars = require("variables")
 
@@ -27,15 +32,18 @@ end
 local hostname = read_hostname()
 local host = load_host(hostname)
 
--- One monitor or a priority list, the first connected one is the main monitor
-local primary_monitors = host.primaryMonitor or {}
-if type(primary_monitors) == "string" then
-    primary_monitors = { primary_monitors }
+local function as_list(selectors)
+    if type(selectors) == "string" then return { selectors } end
+    return selectors or {}
 end
 
-if #primary_monitors == 0 then
+-- The first connected primary monitor is the main monitor, else the first one that isn't a secondary monitor
+local primary_monitors = as_list(host.primaryMonitor)
+local secondary_monitors = as_list(host.secondaryMonitor)
+
+if #primary_monitors == 0 and #secondary_monitors == 0 then
     pcall(hl.notification.create, {
-        text    = "No primaryMonitor set in ~/.config/hypr/hosts/" .. hostname .. ".lua, using the first monitor",
+        text    = "No primaryMonitor or secondaryMonitor set in ~/.config/hypr/hosts/" .. hostname .. ".lua, using the first monitor",
         timeout = 10000,
         icon    = 3, -- error
     })
@@ -65,6 +73,22 @@ local function pick_primary_secondary(monitors)
         end
         if primary then break end
     end
+
+    if not primary then
+        for _, mon in ipairs(monitors) do
+            local is_secondary = false
+            for _, selector in ipairs(secondary_monitors) do
+                if matches(mon, selector) then
+                    is_secondary = true
+                    break
+                end
+            end
+            if not is_secondary then
+                primary = mon
+                break
+            end
+        end
+    end
     primary = primary or monitors[1]
 
     local secondary
@@ -87,7 +111,7 @@ end
 
 local function target_monitor(id, primary, secondary)
     local position = ((id - 1) % 10) + 1 -- 1-10 within its decade
-    return (not secondary or position > 5) and primary or secondary
+    return (not secondary or position <= 5) and primary or secondary
 end
 
 local function apply_workspace_layout()
