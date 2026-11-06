@@ -7,7 +7,7 @@ return {
 
     -- Apps
     terminal                   = "alacritty",
-    browser                    = "zen-browser",
+    browser                    = "zen-browser || flatpak run app.zen_browser.zen", -- Arch (AUR) || Flatpak
     editor                     = "codium",
     fileExplorer               = "thunar",
     audioSettings              = "pwvucontrol",
