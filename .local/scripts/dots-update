@@ -65,9 +65,14 @@ if git -C "$SHELL_DIR" fetch -q upstream 2>/dev/null; then
     [ "$new" -gt 0 ] && echo "caelestia upstream: $new new commits"
 fi
 
-if pgrep -f 'quickshell.*caelestia|qs -c caelestia' >/dev/null; then
+# Not `caelestia shell -r`: after a Nix upgrade the CLI only knows the new build's path,
+# so it can't stop the old shell and two run at once (doubled bar/border space)
+CAELESTIA_PROC='quickshell.*caelestia|qs -c caelestia'
+if pgrep -f "$CAELESTIA_PROC" >/dev/null; then
     step "Restarting Caelestia"
-    caelestia shell -r >/dev/null 2>&1 || warn "caelestia: restart failed"
+    pkill -f "$CAELESTIA_PROC"
+    for _ in $(seq 20); do pgrep -f "$CAELESTIA_PROC" >/dev/null || break; sleep 0.25; done
+    caelestia shell -d >/dev/null 2>&1 || warn "caelestia: restart failed"
 fi
 
 mkdir -p "$STATE_DIR" && date +%s >"$STATE_DIR/last-update"
