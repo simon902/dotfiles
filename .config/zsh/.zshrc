@@ -117,8 +117,17 @@ done
 
 # Plugins
 #
+plugin() {
+    local file="${ZDOTDIR:-$HOME/.config/zsh}/plugins/$1"
+    if [ -r "$file" ]; then
+        source "$file"
+    else
+        print -u2 "zsh: plugin $1 missing, run: git submodule update --init in the dotfiles repo"
+    fi
+}
+
 ZVM_INIT_MODE=sourcing
-source /usr/share/zsh/plugins/zsh-vi-mode/zsh-vi-mode.plugin.zsh 2>/dev/null
+plugin zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
 # Keybindings, after zsh-vi-mode as it resets them
 bindkey "^[[1;5C" forward-word
@@ -129,17 +138,20 @@ bindkey "^[OC" forward-word
 bindkey "^[OD" backward-word
 bindkey "^[[3~" delete-char
 
-source "$HOME/.config/zsh/scripts/fzf-tab/fzf-tab.plugin.zsh"
+plugin fzf-tab/fzf-tab.plugin.zsh
 # fzf keybindings (history search) + completions
 source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"
 
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+plugin zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh 2>/dev/null
+plugin zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# Suggest the package that provides an unknown command (pkgfile)
-source /usr/share/doc/pkgfile/command-not-found.zsh 2>/dev/null
+# Suggest the package that provides an unknown command (Arch: pkgfile, Ubuntu: command-not-found)
+for f in /usr/share/doc/pkgfile/command-not-found.zsh /etc/zsh_command_not_found; do
+    [ -r "$f" ] && { source "$f"; break; }
+done
+unset f
 
 # Starship Prompt
 case $(tty) in

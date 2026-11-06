@@ -3,7 +3,6 @@ aliases
 
 
 # zsh plugins
-fzf-tab
 z.lua
 zsh-fzf-history-search
 
