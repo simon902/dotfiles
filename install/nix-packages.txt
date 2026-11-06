@@ -19,6 +19,7 @@ nixpkgs#nitch
 nixpkgs#vivid
 
 # Apps
+nixpkgs#alacritty
 nixpkgs#pwvucontrol
 nixpkgs#flameshot
 
