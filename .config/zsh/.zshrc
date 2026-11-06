@@ -159,3 +159,22 @@ case $(tty) in
 	(*) 		eval "$(starship init zsh)";;
 esac
 
+
+# Reminder: dots-update is due / dotfiles commits not pushed (local checks only, no network)
+dots_reminder() {
+    zmodload -F zsh/datetime p:EPOCHSECONDS
+    local repo=${ZDOTDIR:A:h:h} stamp=${XDG_STATE_HOME:-$HOME/.local/state}/dots/last-update
+    local -i days=14 last=0 ahead=0
+    local -a msg
+    [[ -r $stamp ]] && last=$(<$stamp)
+    if (( last == 0 )); then
+        msg+=("no update recorded yet (run dots-update)")
+    elif (( EPOCHSECONDS - last > days * 86400 )); then
+        msg+=("last update $(( (EPOCHSECONDS - last) / 86400 )) days ago (run dots-update)")
+    fi
+    ahead=$(git -C $repo rev-list --count @{upstream}..HEAD 2>/dev/null)
+    (( ahead > 0 )) && msg+=("$ahead commit$( (( ahead > 1 )) && echo s) not pushed")
+    (( $#msg )) && print -P "%F{yellow}dots:%f ${(j: · :)msg}"
+}
+dots_reminder
+unfunction dots_reminder

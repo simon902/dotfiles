@@ -1,0 +1,62 @@
+#!/bin/bash
+# Move pinned dependencies forward on purpose: zsh plugin submodules and the Caelestia fork vs upstream.
+# Nothing is committed; review, test, then commit yourself.
+#   dots-bump          zsh plugins + show upstream Caelestia changes
+#   dots-bump plugins  only zsh plugins
+#   dots-bump caelestia  only upstream Caelestia
+
+set -u
+REPO="$(cd "$(dirname "$(readlink -f "$0")")/../.." && pwd)"
+SHELL_DIR="$REPO/.config/quickshell/caelestia"
+what="${1:-all}"
+
+step() { printf '\n\e[1;34m==> %s\e[0m\n' "$*"; }
+
+if [ "$what" = all ] || [ "$what" = plugins ]; then
+    step "zsh plugins"
+    declare -A before
+    for plugin in "$REPO"/.config/zsh/plugins/*/; do
+        before[$plugin]=$(git -C "$plugin" rev-parse HEAD)
+    done
+    git -C "$REPO" submodule update --remote .config/zsh/plugins
+
+    changed=0
+    for plugin in "$REPO"/.config/zsh/plugins/*/; do
+        old=${before[$plugin]}
+        [ "$old" = "$(git -C "$plugin" rev-parse HEAD)" ] && continue
+        changed=1
+        printf '\n\e[1m%s\e[0m\n' "$(basename "$plugin")"
+        git -C "$plugin" log --oneline --no-decorate "$old..HEAD"
+    done
+    if [ $changed = 1 ]; then
+        echo
+        echo "Open a new terminal to test, then commit:"
+        echo "  git -C $REPO add .config/zsh/plugins && git -C $REPO commit -m 'zsh: Update plugins'"
+        echo "Undo: git -C $REPO submodule update .config/zsh/plugins"
+    else
+        echo "All plugins are up to date."
+    fi
+fi
+
+if [ "$what" = all ] || [ "$what" = caelestia ]; then
+    step "Caelestia upstream"
+    git -C "$SHELL_DIR" fetch -q upstream
+    new=$(git -C "$SHELL_DIR" rev-list --count HEAD..upstream/main)
+    if [ "$new" -eq 0 ]; then
+        echo "The fork has everything from upstream/main."
+    else
+        echo "$new new upstream commits (newest first):"
+        git -C "$SHELL_DIR" log --oneline --no-decorate HEAD..upstream/main | head -30
+        [ "$new" -gt 30 ] && echo "..."
+        cat <<EOF
+
+To merge them into your fork (branch custom):
+  cd $SHELL_DIR
+  git merge upstream/main     # resolve conflicts if any
+  git push
+Then rebuild and record the new fork commit in the dotfiles:
+  dots-update
+  git -C $REPO add .config/quickshell/caelestia && git -C $REPO commit -m 'Caelestia: Merge upstream'
+EOF
+    fi
+fi

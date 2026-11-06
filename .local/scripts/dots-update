@@ -1,0 +1,80 @@
+#!/bin/bash
+# Update this machine: dotfiles repo, packages, Caelestia. zsh reminds you when it's due.
+# Pinned things (zsh plugins, upstream Caelestia) are only checked here; update them with dots-bump.
+
+set -u
+REPO="$(cd "$(dirname "$(readlink -f "$0")")/../.." && pwd)"
+SHELL_DIR="$REPO/.config/quickshell/caelestia"
+STATE_DIR="${XDG_STATE_HOME:-$HOME/.local/state}/dots"
+WARNINGS=()
+
+step() { printf '\n\e[1;34m==> %s\e[0m\n' "$*"; }
+warn() { printf '\e[1;33m%s\e[0m\n' "$*"; WARNINGS+=("$*"); }
+
+caelestia_before=$(git -C "$SHELL_DIR" rev-parse HEAD 2>/dev/null)
+
+step "Dotfiles"
+if [ -n "$(git -C "$REPO" status --porcelain --ignore-submodules=dirty)" ]; then
+    warn "dotfiles: uncommitted changes, skipped git pull"
+else
+    git -C "$REPO" pull --ff-only || warn "dotfiles: git pull failed"
+fi
+git -C "$REPO" submodule update --init .config/zsh/plugins || warn "zsh plugins: submodule update failed"
+# --merge keeps the fork on its branch instead of detaching it
+git -C "$REPO" submodule update --init --merge .config/quickshell/caelestia || warn "caelestia: submodule update failed"
+
+if command -v pacman >/dev/null; then
+    step "Packages (yay)"
+    quickshell_before=$(pacman -Q quickshell quickshell-git 2>/dev/null)
+    yay -Syu || warn "yay -Syu failed"
+    # Packages added to pkglist.txt on another machine
+    missing=$(comm -23 <(comm -12 <(pacman -Slq | sort -u) <(sort -u "$REPO/install/pkglist.txt")) <(pacman -Qq | sort -u))
+    [ -n "$missing" ] && { sudo pacman -S --needed $missing || warn "installing new pkglist.txt packages failed"; }
+    quickshell_after=$(pacman -Q quickshell quickshell-git 2>/dev/null)
+
+    # The plugin must match the fork's QML and the installed Qt/Quickshell
+    if [ "$caelestia_before" != "$(git -C "$SHELL_DIR" rev-parse HEAD)" ] || [ "$quickshell_before" != "$quickshell_after" ]; then
+        step "Caelestia plugin"
+        "$REPO/install/dependencies/post/caelestiaShell.sh" "$REPO" || warn "caelestia: plugin build failed"
+    fi
+else
+    step "Packages (apt)"
+    { sudo apt update && sudo apt upgrade; } || warn "apt upgrade failed"
+
+    if command -v nix >/dev/null; then
+        # Also rebuilds the caelestia fork; undo with: nix profile rollback
+        step "Nix"
+        nix profile upgrade --all --impure || warn "nix profile upgrade failed (undo: nix profile rollback)"
+        python3 "$REPO/install/dependencies/post/nixPackages.py" "$REPO" || warn "installing new nix-packages.txt packages failed"
+    fi
+
+    if command -v flatpak >/dev/null; then
+        step "Flatpak"
+        flatpak update || warn "flatpak update failed"
+    fi
+fi
+
+step "Upstream (update with dots-bump)"
+for plugin in "$REPO"/.config/zsh/plugins/*/; do
+    git -C "$plugin" fetch -q origin 2>/dev/null || continue
+    new=$(git -C "$plugin" rev-list --count HEAD..origin/HEAD 2>/dev/null)
+    [ "${new:-0}" -gt 0 ] && echo "zsh plugin $(basename "$plugin"): $new new commits"
+done
+if git -C "$SHELL_DIR" fetch -q upstream 2>/dev/null; then
+    new=$(git -C "$SHELL_DIR" rev-list --count HEAD..upstream/main)
+    [ "$new" -gt 0 ] && echo "caelestia upstream: $new new commits"
+fi
+
+if pgrep -f 'quickshell.*caelestia|qs -c caelestia' >/dev/null; then
+    step "Restarting Caelestia"
+    caelestia shell -r >/dev/null 2>&1 || warn "caelestia: restart failed"
+fi
+
+mkdir -p "$STATE_DIR" && date +%s >"$STATE_DIR/last-update"
+
+if [ ${#WARNINGS[@]} -gt 0 ]; then
+    printf '\n\e[1;33mDone with warnings:\e[0m\n'
+    printf '  %s\n' "${WARNINGS[@]}"
+else
+    printf '\n\e[1;32mDone.\e[0m\n'
+fi
