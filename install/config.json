@@ -6,6 +6,7 @@
     ".config/clangd",
     ".config/flameshot/flameshot.ini",
     ".config/gtk-3.0/settings.ini",
+    ".config/hypr",
     ".config/keepassxc",
     ".config/mimeapps.list",
     ".config/mpd",
