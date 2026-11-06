@@ -1,3 +1,9 @@
+# Nix on non-NixOS (e.g. Ubuntu); its installer only patches /etc/zshrc, which Debian's zsh doesn't read
+[ -e /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh ] && . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+
+# Debian/Ubuntu's /etc/zsh/zshrc runs its own compinit; .zshrc already does that
+skip_global_compinit=1
+
 path=($HOME"/.local/bin" $path)
 path=($HOME"/.local/scripts" $path)
 path+=($HOME"/.cabal/bin")

@@ -47,7 +47,7 @@ zstyle ':completion:*:manuals.*' insert-sections true
 zstyle ':completion:*:man.*' menu yes select
 
 # preview directory's content with eza when completing with cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 
 
 autoload -Uz compinit

@@ -1,10 +1,32 @@
 local vars = require("variables")
 local fn   = require("utils.functions")
 
+-- Paths differ between distros (Arch: /usr/lib, Debian/Ubuntu: /usr/libexec or package-specific dirs)
+local function first_existing(paths)
+    for _, p in ipairs(paths) do
+        local f = io.open(p)
+        if f then
+            f:close()
+            return p
+        end
+    end
+end
+
+local polkit_agent = first_existing({
+    "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1",
+    "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1",
+    "/usr/libexec/polkit-gnome-authentication-agent-1",
+})
+
+local geoclue_agent = first_existing({
+    "/usr/lib/geoclue-2.0/demos/agent",
+    "/usr/libexec/geoclue-2.0/demos/agent",
+})
+
 hl.on("hyprland.start", function()
     -- Keyring and auth
     hl.exec_cmd("gnome-keyring-daemon --start --components=secrets")
-    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    if polkit_agent then hl.exec_cmd(polkit_agent) end
 
     -- Clipboard history
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
@@ -24,7 +46,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("gsettings set org.gnome.desktop.interface font-name '" .. vars.gtkFont .. "'")
 
     -- Location provider and night light
-    hl.exec_cmd("/usr/lib/geoclue-2.0/demos/agent")
+    if geoclue_agent then hl.exec_cmd(geoclue_agent) end
     hl.exec_cmd("sleep 1 && gammastep")
 
     -- Forward bluetooth media commands to MPRIS
