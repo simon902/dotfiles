@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Name=FortiClient
+GenericName=Security Software
+Comment=Endpoint Protection Suite
+# Force XWayland: under native Wayland the GUI never maps a window
+Exec=env ELECTRON_OZONE_PLATFORM_HINT=x11 /opt/forticlient/gui/FortiClient
+TryExec=/opt/forticlient/gui/FortiClient
+Icon=forticlient
+Type=Application
+Terminal=false
+Categories=Utility;
