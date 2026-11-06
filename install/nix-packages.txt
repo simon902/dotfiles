@@ -15,6 +15,8 @@ github:caelestia-dots/cli
 # Shell
 nixpkgs#starship
 nixpkgs#fzf
+nixpkgs#nitch
+nixpkgs#vivid
 
 # Apps
 nixpkgs#pwvucontrol
