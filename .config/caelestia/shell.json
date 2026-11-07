@@ -40,7 +40,7 @@
         ]
     },
     "dashboard": {
-        "showOnHover": true
+        "showOnHover": false
     },
     "services": {
         "audioIncrement": 0.05,
