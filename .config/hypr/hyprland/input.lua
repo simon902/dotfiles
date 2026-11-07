@@ -23,3 +23,9 @@ hl.config({
         hotspot_padding = 1,
     },
 })
+
+-- Per mouse pointer speed (-1 to 1, names from `hyprctl devices`)
+hl.device({
+    name        = "logitech-mx-vertical-1",
+    sensitivity = -0.2,
+})
